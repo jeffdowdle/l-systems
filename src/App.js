@@ -1,5 +1,21 @@
+import { connect } from 'react-redux';
 import React from 'react';
+import { actions as rulesActions } from './modules/rules';
 
-const App = () => <div>Hi!</div>;
+const App = ({
+  onClick,
+}) => {
+  return (
+    <div>
+      <button onClick={onClick}>Add</button>
+    </div>
+  );
+};
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  onClick: () => {
+    dispatch(rulesActions.addRule());
+  },
+});
+
+export default connect(null, mapDispatchToProps)(App);

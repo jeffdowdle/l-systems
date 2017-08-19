@@ -1,8 +1,6 @@
-export const initialState = {};
+import { combineReducers } from 'redux';
+import { reducer as rules } from './modules/rules';
 
-export default (state = initialState, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+export default combineReducers({
+  rules,
+});

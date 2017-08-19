@@ -9,7 +9,6 @@ import App from './App';
 const render = (Component) => {
   const store = createStore(
     rootReducer,
-    initialState,
     devToolsEnhancer(),
   );
 
