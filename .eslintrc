@@ -1,3 +1,11 @@
 {
-  "extends": "airbnb-base"
+  "extends": "airbnb",
+  "rules": {
+    "jsx-a11y/href-no-hash": "off", // Disabled due to false positives, look at turning back on later
+    "react/jsx-filename-extension": "off"
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  }
 }
