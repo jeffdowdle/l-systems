@@ -1,8 +1,12 @@
 import React from 'react';
-import {
-  ProductionRules,
-} from './modules/rules';
+import { ProductionRules } from './modules/rules';
+import { Axiom } from './modules/axiom';
 
-const App = () => <ProductionRules />;
+const App = () => (
+  <div>
+    <Axiom />
+    <ProductionRules />
+  </div>
+);
 
 export default App;
