@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch",
     "dev": "node_modules/.bin/webpack-dev-server --config webpack.dev.config.js",
     "start": "npm run dev"
   },

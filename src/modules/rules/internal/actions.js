@@ -9,3 +9,20 @@ export const addRule = () => {
     id: ruleId,
   };
 };
+
+export const removeRule = id => ({
+  type: actionTypes.REMOVE_RULE,
+  id,
+});
+
+export const updateSymbol = (id, symbol) => ({
+  type: actionTypes.UPDATE_RULE_SYMBOL,
+  id,
+  symbol,
+});
+
+export const updateSuccessor = (id, successor) => ({
+  type: actionTypes.UPDATE_RULE_SUCCESSOR,
+  id,
+  successor,
+});
