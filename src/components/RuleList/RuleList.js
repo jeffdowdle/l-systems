@@ -11,7 +11,7 @@ const RuleList = ({
   <div>
     <ul>
       {rules.map(r => (
-        <li>
+        <li key={r.id}>
           <Rule
             rule={r}
             onUpdateSymbol={(symbol) => {
