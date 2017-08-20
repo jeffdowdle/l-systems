@@ -7,35 +7,26 @@ const rule = (state, action) => {
     case types.ADD_RULE:
       return {
         id: action.id,
-        symbol: null,
-        successor: null,
+        symbol: '',
+        successor: '',
       };
+
     case types.REMOVE_RULE:
       if (state.id === action.id) {
         return null;
       }
-
       return state;
-    case types.UPDATE_RULE_SYMBOL:
+
+    case types.UPDATE_RULE:
       if (state.id === action.id) {
         return Object.assign(
           {},
           state,
-          { symbol: action.symbol },
+          action.values,
         );
       }
-
       return state;
-    case types.UPDATE_RULE_SUCCESSOR:
-      if (state.id === action.id) {
-        return Object.assign(
-          {},
-          state,
-          { successor: action.successor },
-        );
-      }
 
-      return state;
     default:
       return state;
   }
@@ -51,10 +42,7 @@ const rules = (state = initialState, action) => {
         .map(r => rule(r, action))
         .filter(r => r !== null);
 
-    case types.UPDATE_RULE_SYMBOL:
-      return state.map(r => rule(r, action));
-
-    case types.UPDATE_RULE_SUCCESSOR:
+    case types.UPDATE_RULE:
       return state.map(r => rule(r, action));
 
     default:

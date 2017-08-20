@@ -16,8 +16,8 @@ describe('rules/ADD_RULE', () => {
     const afterOnce = [
       {
         id: 123,
-        symbol: null,
-        successor: null,
+        symbol: '',
+        successor: '',
       },
     ];
 
@@ -29,13 +29,13 @@ describe('rules/ADD_RULE', () => {
     const afterTwice = [
       {
         id: 123,
-        symbol: null,
-        successor: null,
+        symbol: '',
+        successor: '',
       },
       {
         id: 456,
-        symbol: null,
-        successor: null,
+        symbol: '',
+        successor: '',
       },
     ];
 
@@ -51,13 +51,13 @@ describe('rules/REMOVE_RULE', () => {
     const before = [
       {
         id: 123,
-        symbol: null,
-        successor: null,
+        symbol: '',
+        successor: '',
       },
       {
         id: 456,
-        symbol: null,
-        successor: null,
+        symbol: '',
+        successor: '',
       },
     ];
 
@@ -69,8 +69,8 @@ describe('rules/REMOVE_RULE', () => {
     const after = [
       {
         id: 456,
-        symbol: null,
-        successor: null,
+        symbol: '',
+        successor: '',
       },
     ];
 
@@ -82,13 +82,13 @@ describe('rules/REMOVE_RULE', () => {
     const before = [
       {
         id: 123,
-        symbol: null,
-        successor: null,
+        symbol: '',
+        successor: '',
       },
       {
         id: 456,
-        symbol: null,
-        successor: null,
+        symbol: '',
+        successor: '',
       },
     ];
 
@@ -102,76 +102,78 @@ describe('rules/REMOVE_RULE', () => {
   });
 });
 
-describe('rules/UPDATE_RULE_SYMBOL', () => {
+describe('rules/UPDATE_RULE', () => {
   it('updates the rule\'s symbol', () => {
     const before = [
       {
         id: 123,
-        symbol: null,
-        successor: null,
+        symbol: '',
+        successor: '',
       },
       {
         id: 456,
-        symbol: null,
-        successor: null,
+        symbol: '',
+        successor: '',
       },
     ];
 
     const action = {
-      type: types.UPDATE_RULE_SYMBOL,
+      type: types.UPDATE_RULE,
       id: 456,
-      symbol: 'testing',
+      values: {
+        symbol: 'symbolTest',
+      },
     };
 
     const after = [
       {
         id: 123,
-        symbol: null,
-        successor: null,
+        symbol: '',
+        successor: '',
       },
       {
         id: 456,
-        symbol: 'testing',
-        successor: null,
+        symbol: 'symbolTest',
+        successor: '',
       },
     ];
 
     deepFreeze(before);
     expect(reducer(before, action)).toEqual(after);
   });
-});
 
-describe('rules/UPDATE_RULE_SUCCESSOR', () => {
   it('updates the rule\'s successor', () => {
     const before = [
       {
         id: 123,
-        symbol: null,
-        successor: null,
+        symbol: '',
+        successor: '',
       },
       {
         id: 456,
-        symbol: null,
-        successor: null,
+        symbol: '',
+        successor: '',
       },
     ];
 
     const action = {
-      type: types.UPDATE_RULE_SUCCESSOR,
+      type: types.UPDATE_RULE,
       id: 456,
-      successor: 'testing',
+      values: {
+        successor: 'successorTest',
+      },
     };
 
     const after = [
       {
         id: 123,
-        symbol: null,
-        successor: null,
+        symbol: '',
+        successor: '',
       },
       {
         id: 456,
-        symbol: null,
-        successor: 'testing',
+        symbol: '',
+        successor: 'successorTest',
       },
     ];
 

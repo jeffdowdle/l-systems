@@ -3,7 +3,8 @@
   "rules": {
     "jsx-a11y/href-no-hash": "off", // Disabled due to false positives, look at turning back on later
     "react/jsx-filename-extension": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "react/forbid-prop-types": "off"
   },
   "env": {
     "browser": true,

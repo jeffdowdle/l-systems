@@ -15,14 +15,8 @@ export const removeRule = id => ({
   id,
 });
 
-export const updateSymbol = (id, symbol) => ({
-  type: actionTypes.UPDATE_RULE_SYMBOL,
+export const updateRule = (id, values) => ({
+  type: actionTypes.UPDATE_RULE,
   id,
-  symbol,
-});
-
-export const updateSuccessor = (id, successor) => ({
-  type: actionTypes.UPDATE_RULE_SUCCESSOR,
-  id,
-  successor,
+  values,
 });

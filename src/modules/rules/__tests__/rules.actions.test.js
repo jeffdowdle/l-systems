@@ -13,11 +13,9 @@ describe('Rules action creators behave correctly', () => {
     };
 
     const resultOnce = actions.addRule();
-
     expect(resultOnce).toEqual(expectedOnce);
 
     const resultTwice = actions.addRule();
-
     expect(resultTwice).toEqual(expectedTwice);
   });
 
@@ -32,26 +30,14 @@ describe('Rules action creators behave correctly', () => {
     expect(result).toEqual(expected);
   });
 
-  it('updateSymbol(id, symbol)', () => {
+  it('updateRule(id, values)', () => {
     const expected = {
-      type: 'rules/UPDATE_RULE_SYMBOL',
+      type: 'rules/UPDATE_RULE',
       id: 123,
-      symbol: 'test',
+      values: { test: 'thing' },
     };
 
-    const result = actions.updateSymbol(123, 'test');
-
-    expect(result).toEqual(expected);
-  });
-
-  it('updateSuccessor(id, successor)', () => {
-    const expected = {
-      type: 'rules/UPDATE_RULE_SUCCESSOR',
-      id: 123,
-      successor: 'test',
-    };
-
-    const result = actions.updateSuccessor(123, 'test');
+    const result = actions.updateRule(123, { test: 'thing' });
 
     expect(result).toEqual(expected);
   });
