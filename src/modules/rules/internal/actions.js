@@ -1,22 +1,22 @@
-import * as actionTypes from './actionTypes';
+import * as types from './actionTypes';
 
 let ruleId = 0;
 export const addRule = () => {
   ruleId += 1;
 
   return {
-    type: actionTypes.ADD_RULE,
+    type: types.ADD_RULE,
     id: ruleId,
   };
 };
 
 export const removeRule = id => ({
-  type: actionTypes.REMOVE_RULE,
+  type: types.REMOVE_RULE,
   id,
 });
 
 export const updateRule = (id, values) => ({
-  type: actionTypes.UPDATE_RULE,
+  type: types.UPDATE_RULE,
   id,
   values,
 });
