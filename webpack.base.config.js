@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const DIST_PATH = path.join(__dirname, 'dist');
+const DIST_PATH = path.resolve(__dirname, 'dist');
 
 module.exports = {
   entry: './src/index.js',
@@ -13,8 +13,16 @@ module.exports = {
   module: {
     rules: [
       {
+        include: path.resolve(__dirname, './src'),
+        loaders: [
+          'style-loader',
+          'css-loader?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+        ],
+        test: /\.css$/,
+      },
+      {
         test: /\.js$/,
-        exclude: /node_modules/,
+        include: path.resolve(__dirname, './src'),
         loader: 'babel-loader',
       },
     ],

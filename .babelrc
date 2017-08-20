@@ -10,5 +10,8 @@
       }
     }]
   ],
-  "plugins": ["transform-react-jsx"]
+  "plugins": [
+    "transform-react-jsx",
+    "react-css-modules"
+  ]
 }
