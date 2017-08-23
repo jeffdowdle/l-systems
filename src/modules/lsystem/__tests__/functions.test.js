@@ -1,0 +1,60 @@
+import {
+  expand,
+} from '../functions';
+
+const testExpand = (str, rules, expected) => {
+  expect(expand(rules)(str)).toBe(expected);
+};
+
+describe('expand(str, rules)', () => {
+  it('returns the original string if there are no matching rules', () => {
+    testExpand('X', null, 'X');
+    testExpand('X', [], 'X');
+    testExpand('X', [
+      { symbol: 'Y', successor: 'XX' }
+    ], 'X');
+  });
+
+  it('expands str a single iteration', () => {
+    testExpand('X', [
+      { symbol: 'X', successor: 'YY' }
+    ], 'YY');
+
+    testExpand('ABA', [
+      { symbol: 'A', successor: 'BB' },
+      { symbol: 'B', successor: 'A' },
+    ], 'BBABB');
+  });
+
+  it('will ignore rules who\'s symbols don\'t appear in the inital string', () => {
+    testExpand('X', [
+      { symbol: 'X', successor: 'YY' },
+      { symbol: 'Y', successor: 'ZZ' },
+    ], 'YY');
+
+    testExpand('ABA', [
+      { symbol: 'A', successor: 'BB' },
+      { symbol: 'B', successor: 'A' },
+      { symbol: 'Y', successor: 'ZZ' },
+    ], 'BBABB');
+  });
+
+  it('will treat characters without a rule as terminals and return them as is', () => {
+    testExpand('K', [
+      { symbol: 'X', successor: 'YY' },
+    ], 'K');
+
+    testExpand('AKBVA', [
+      { symbol: 'A', successor: 'BB' },
+      { symbol: 'B', successor: 'A' },
+    ], 'BBKAVBB');
+  });
+
+  it('accepts arbitrary characters', () => {
+    testExpand('K+BA-[]987', [
+      { symbol: 'X', successor: 'YY' },
+      { symbol: '9', successor: '[9]' },
+      { symbol: '-', successor: '+' },
+    ], 'K+BA+[][9]87');
+  });
+});
