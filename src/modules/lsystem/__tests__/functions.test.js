@@ -3,7 +3,11 @@ import {
 } from '../functions';
 
 const testExpand = (str, rules, expected) => {
-  expect(expand(rules)(str)).toBe(expected);
+  expect(expand(rules, str)).toBe(expected);
+};
+
+const testExpandWithIterations = (str, rules, iterations, expected) => {
+  expect(expand(rules, str, iterations)).toBe(expected);
 };
 
 describe('expand(str, rules)', () => {
@@ -15,7 +19,7 @@ describe('expand(str, rules)', () => {
     ], 'X');
   });
 
-  it('expands str a single iteration', () => {
+  it('expands a single iteration if the number of iterations aren`t specified', () => {
     testExpand('X', [
       { symbol: 'X', successor: 'YY' }
     ], 'YY');
@@ -24,6 +28,76 @@ describe('expand(str, rules)', () => {
       { symbol: 'A', successor: 'BB' },
       { symbol: 'B', successor: 'A' },
     ], 'BBABB');
+  });
+
+  it('expands N iterations', () => {
+    testExpandWithIterations(
+      'X',
+      [{ symbol: 'X', successor: 'YY' }],
+      1,
+      'YY',
+    );
+
+    testExpandWithIterations(
+      'X',
+      [{ symbol: 'X', successor: 'YY' }],
+      2,
+      'YY',
+    );
+
+    testExpandWithIterations(
+      'X',
+      [{ symbol: 'X', successor: 'YXY' }],
+      2,
+      'YYXYY',
+    );
+
+    testExpandWithIterations(
+      'X',
+      [{ symbol: 'X', successor: 'YXY' }],
+      3,
+      'YYYXYYY',
+    );
+
+    testExpandWithIterations(
+      'X',
+      [{ symbol: 'X', successor: 'YXY' }],
+      20,
+      'YYYYYYYYYYYYYYYYYYYYXYYYYYYYYYYYYYYYYYYYY', // 20 Ys, an X, then 20 more Ys ;)
+    );
+
+    testExpandWithIterations(
+      'ABBY',
+      [
+        { symbol: 'A', successor: 'ABZ' },
+        { symbol: 'B', successor: 'A' },
+        { symbol: 'Y', successor: 'BZ' },
+      ],
+      0,
+      'ABBY',
+    );
+
+    testExpandWithIterations(
+      'ABBY',
+      [
+        { symbol: 'A', successor: 'ABZ' },
+        { symbol: 'B', successor: 'A' },
+        { symbol: 'Y', successor: 'BZ' },
+      ],
+      1,
+      'ABZAABZ',
+    );
+
+    testExpandWithIterations(
+      'ABBY',
+      [
+        { symbol: 'A', successor: 'ABZ' },
+        { symbol: 'B', successor: 'A' },
+        { symbol: 'Y', successor: 'BZ' },
+      ],
+      2,
+      'ABZAZABZABZAZ',
+    );
   });
 
   it('will ignore rules who\'s symbols don\'t appear in the inital string', () => {
