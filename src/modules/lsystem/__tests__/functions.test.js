@@ -15,13 +15,13 @@ describe('expand(str, rules)', () => {
     testExpand('X', null, 'X');
     testExpand('X', [], 'X');
     testExpand('X', [
-      { symbol: 'Y', successor: 'XX' }
+      { symbol: 'Y', successor: 'XX' },
     ], 'X');
   });
 
   it('expands a single iteration if the number of iterations aren`t specified', () => {
     testExpand('X', [
-      { symbol: 'X', successor: 'YY' }
+      { symbol: 'X', successor: 'YY' },
     ], 'YY');
 
     testExpand('ABA', [

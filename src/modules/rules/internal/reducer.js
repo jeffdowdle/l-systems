@@ -1,6 +1,12 @@
 import * as types from './actionTypes';
 
-const initialState = [];
+const initialState = [
+  {
+    id: -1,
+    symbol: 'F',
+    successor: 'F+F-F-F+F',
+  },
+];
 
 const rule = (state, action) => {
   switch (action.type) {
