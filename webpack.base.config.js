@@ -12,19 +12,34 @@ module.exports = {
   },
   module: {
     rules: [
+
+      // normalize.css, gets included before all other styles
+      {
+        include: path.resolve(__dirname, './node_modules/normalize.css/normalize.css'),
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+
+      // CSS Modules
       {
         include: path.resolve(__dirname, './src'),
-        loaders: [
+        use: [
           'style-loader',
           'css-loader?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+          'postcss-loader',
         ],
         test: /\.css$/,
       },
+
+      // Javascript
       {
         test: /\.js$/,
         include: path.resolve(__dirname, './src'),
         loader: 'babel-loader',
       },
+
     ],
   },
   plugins: [

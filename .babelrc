@@ -2,11 +2,8 @@
   "presets": [
     ["env", {
       "targets": {
-        "node": "current",
-        "browsers": [
-          "last 2 versions",
-          "not Explorer <= 11"
-        ]
+        "node": "current"
+        // For "browsers": See browsersList in package.json
       }
     }]
   ],

@@ -1,0 +1,13 @@
+.layout-container {
+  display: grid;
+  grid-template-columns: [aside-start] 300px [aside-end main-start] auto [main-end];
+  grid-template-rows: 100vh;
+}
+
+.layout-side-bar {
+  background: #C2C2C2;
+}
+
+.layout-main {
+  background: #FFFFFF;
+}
