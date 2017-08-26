@@ -10,8 +10,9 @@ const TurtleCommand = {
 const BASE_LENGTH = 1;
 
 export default class TurtleRenderer {
-  constructor(canvas) {
+  constructor(canvas, params) {
     this.canvas = canvas;
+    this.params = params;
 
     this.canvas.width = 600;
     this.canvas.height = 600;
@@ -19,6 +20,7 @@ export default class TurtleRenderer {
 
   calculateBoundingBox(instructions) {
     const dryRunTurtle = new DryRunTurtle({
+      angle: this.params.angle,
       length: BASE_LENGTH,
       startX: 0,
       startY: 0,
@@ -61,6 +63,7 @@ export default class TurtleRenderer {
 
     // Finally, draw the scaled down image
     const drawingTurtle = new CanvasTurtle(this.canvas, {
+      angle: this.params.angle,
       length: BASE_LENGTH * scalingFactor,
       startX: adjustedStartX,
       startY: adjustedStartY,

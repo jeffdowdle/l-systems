@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { selectors as rulesSelectors } from '../../../rules';
 import { selectors as axiomSelectors } from '../../../axiom';
+import { selectors as paramsSelectors } from '../../../params';
 import Renderer from '../../../../components/Renderer';
 
 
@@ -32,6 +33,8 @@ class ConnectedRenderer extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  angle: paramsSelectors.getAngle(state),
+  iterations: paramsSelectors.getIterations(state),
   rules: rulesSelectors.getRules(state),
   axiom: axiomSelectors.getAxiom(state),
 });

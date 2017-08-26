@@ -1,6 +1,7 @@
 import React from 'react';
 import { ProductionRules } from './modules/rules';
 import { Axiom } from './modules/axiom';
+import { Params } from './modules/params';
 import { ConnectedRenderer } from './modules/renderer';
 import UpdateButton from './components/UpdateButton';
 import AppLayout, { AppLayoutSideBar, AppLayoutMain } from './components/AppLayout';
@@ -8,6 +9,7 @@ import AppLayout, { AppLayoutSideBar, AppLayoutMain } from './components/AppLayo
 const App = () => (
   <AppLayout>
     <AppLayoutSideBar>
+      <Params />
       <Axiom />
       <ProductionRules />
       <UpdateButton />
