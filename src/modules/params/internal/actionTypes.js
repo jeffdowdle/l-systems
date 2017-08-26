@@ -1,4 +1,4 @@
 const prefixed = type => `params/${type}`;
 
-export const UPDATE_ITERATIONS = prefixed('UPDATE_ITERATIONS');
-export const UPDATE_ANGLE = prefixed('UPDATE_ANGLE');
+export const REGISTER_PARAM = prefixed('REGISTER_PARAM');
+export const UPDATE_PARAM = prefixed('UPDATE_PARAM');

@@ -33,8 +33,7 @@ class ConnectedRenderer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  angle: paramsSelectors.getAngle(state),
-  iterations: paramsSelectors.getIterations(state),
+  params: paramsSelectors.getFlattenedParams(state),
   rules: rulesSelectors.getRules(state),
   axiom: axiomSelectors.getAxiom(state),
 });

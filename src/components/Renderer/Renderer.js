@@ -18,10 +18,10 @@ class Renderer extends React.Component {
   }
 
   draw() {
-    const { rules, axiom, iterations, angle } = this.props;
+    const { rules, axiom, params } = this.props;
 
-    const turtle = new TurtleRenderer(this.canvas, { angle });
-    turtle.draw(expand(rules, axiom, iterations));
+    const turtle = new TurtleRenderer(this.canvas, { angle: params.angle });
+    turtle.draw(expand(rules, axiom, params.iterations));
   }
 
   render() {
@@ -37,8 +37,7 @@ Renderer.defaultProps = {
 };
 
 Renderer.propTypes = {
-  iterations: PropTypes.number,
-  angle: PropTypes.number,
+  params: PropTypes.object,
   axiom: PropTypes.string.isRequired,
   rules: PropTypes.array.isRequired,
 };

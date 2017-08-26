@@ -2,12 +2,22 @@ import { createSelector } from 'reselect';
 
 export const getParams = state => state.params;
 
-export const getIterations = createSelector(
-  getParams,
-  params => params.iterations,
+export const createParamSelector = id => (
+  createSelector(
+    getParams,
+    params => params[id],
+  )
 );
 
-export const getAngle = createSelector(
+export const getFlattenedParams = createSelector(
   getParams,
-  params => params.angle,
+  (params) => {
+    const flattened = {};
+
+    params.forEach((p) => {
+      flattened[p.id] = p.value;
+    });
+
+    return flattened;
+  },
 );

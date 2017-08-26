@@ -5,49 +5,83 @@ import {
   actions as paramsActions,
   selectors as paramsSelectors,
 } from '../../../params';
+import TextInput from '../../../../form/TextInput';
+import RangeInput from '../../../../form/RangeInput';
+import NumberInput from '../../../../form/NumberInput';
 
-const Params = ({
-  iterations,
-  onChangeIterations,
-  angle,
-  onChangeAngle,
-}) => (
-  <div>
-    <input
-      type="number"
-      value={iterations}
-      onChange={e => onChangeIterations(e.target.value)}
-    />
+const paramDeclarations = [
+  {
+    id: 'iterations',
+    label: 'Iterations',
+    fieldType: 'RANGE',
+    initialValue: 3,
+    min: 1,
+    max: 8,
+  },
+  {
+    id: 'angle',
+    label: 'Angle',
+    fieldType: 'NUMBER',
+    initialValue: 90,
+  },
+];
 
-    <input
-      type="number"
-      value={angle}
-      onChange={e => onChangeAngle(e.target.value)}
-    />
-  </div>
-);
+const mapFieldTypeToComponent = (fieldType) => {
+  switch (fieldType) {
+    case 'RANGE':
+      return RangeInput;
+    case 'NUMBER':
+      return NumberInput;
+    case 'TEXT':
+    default:
+      return TextInput;
+  }
+};
+
+class Params extends React.Component {
+  componentWillMount() {
+    paramDeclarations.forEach((declaration) => {
+      this.props.onRegisterParam(declaration);
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        {this.props.params.map((param) => {
+          const declaration = paramDeclarations.find(d => d.id === param.id);
+          const Field = mapFieldTypeToComponent(declaration.fieldType);
+
+          return (
+            <Field
+              {...declaration}
+              key={param.id}
+              value={param.value}
+              onChange={(value) => {
+                this.props.onUpdateParam(param.id, value);
+              }}
+            />
+          );
+        })}
+      </div>
+    );
+  }
+}
 
 Params.propTypes = {
-  iterations: PropTypes.number.isRequired,
-  onChangeIterations: PropTypes.func.isRequired,
-  angle: PropTypes.number.isRequired,
-  onChangeAngle: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  iterations: paramsSelectors.getIterations(state),
-  angle: paramsSelectors.getAngle(state),
+  params: paramsSelectors.getParams(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  onChangeIterations: (val) => {
-    const iterations = parseInt(val, 10);
-    dispatch(paramsActions.updateIterations(iterations));
+  onRegisterParam: (declaration) => {
+    dispatch(paramsActions.registerParam(declaration));
   },
 
-  onChangeAngle: (val) => {
-    const angle = parseInt(val, 10);
-    dispatch(paramsActions.updateAngle(angle));
+  onUpdateParam: (id, value) => {
+    dispatch(paramsActions.updateParam(id, value));
   },
 });
 

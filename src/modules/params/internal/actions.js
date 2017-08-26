@@ -1,11 +1,12 @@
 import * as types from './actionTypes';
 
-export const updateIterations = iterations => ({
-  type: types.UPDATE_ITERATIONS,
-  iterations,
+export const registerParam = declaration => ({
+  type: types.REGISTER_PARAM,
+  declaration,
 });
 
-export const updateAngle = angle => ({
-  type: types.UPDATE_ANGLE,
-  angle,
+export const updateParam = (id, value) => ({
+  type: types.UPDATE_PARAM,
+  id,
+  value,
 });

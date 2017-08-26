@@ -1,23 +1,37 @@
 import * as types from './actionTypes';
 
-const initialState = {
-  iterations: 1,
-  angle: 90,
+const initialState = [];
+
+const param = (state, action) => {
+  switch (action.type) {
+    case types.REGISTER_PARAM:
+      return {
+        id: action.declaration.id,
+        value: action.declaration.initialValue,
+      };
+
+    case types.UPDATE_PARAM:
+      if (state.id === action.id) {
+        return Object.assign(
+          {},
+          state,
+          { value: action.value },
+        );
+      }
+      return state;
+
+    default:
+      return state;
+  }
 };
 
 const params = (state = initialState, action) => {
   switch (action.type) {
-    case types.UPDATE_ITERATIONS:
-      return Object.assign({},
-        state,
-        { iterations: action.iterations },
-      );
+    case types.REGISTER_PARAM:
+      return state.concat(param(undefined, action));
 
-    case types.UPDATE_ANGLE:
-      return Object.assign({},
-        state,
-        { angle: action.angle },
-      );
+    case types.UPDATE_PARAM:
+      return state.map(p => param(p, action));
 
     default:
       return state;
