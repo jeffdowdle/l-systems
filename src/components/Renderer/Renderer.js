@@ -27,7 +27,6 @@ class Renderer extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={() => this.draw()}>Redraw</button>
         <canvas ref={(c) => { this.canvas = c; }} />
       </div>
     );

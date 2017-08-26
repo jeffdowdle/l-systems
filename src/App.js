@@ -2,6 +2,7 @@ import React from 'react';
 import { ProductionRules } from './modules/rules';
 import { Axiom } from './modules/axiom';
 import { ConnectedRenderer } from './modules/renderer';
+import UpdateButton from './components/UpdateButton';
 import AppLayout, { AppLayoutSideBar, AppLayoutMain } from './components/AppLayout';
 
 const App = () => (
@@ -9,6 +10,7 @@ const App = () => (
     <AppLayoutSideBar>
       <Axiom />
       <ProductionRules />
+      <UpdateButton />
     </AppLayoutSideBar>
 
     <AppLayoutMain>
