@@ -10,6 +10,7 @@ const App = () => (
       <Axiom />
       <ProductionRules />
     </AppLayoutSideBar>
+
     <AppLayoutMain>
       <ConnectedRenderer />
     </AppLayoutMain>

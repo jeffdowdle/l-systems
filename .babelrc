@@ -9,6 +9,12 @@
   ],
   "plugins": [
     "transform-react-jsx",
-    "react-css-modules"
+    ["react-css-modules", {
+      "filetypes": {
+        ".scss": {
+          "syntax": "postcss-scss"
+        }
+      }
+    }]
   ]
 }

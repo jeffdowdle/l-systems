@@ -1,0 +1,7 @@
+// RESOURCE IMPORTS
+// These will be available to all css modules via the sass-resources-loader.
+// DO NOT IMPORT ANYTHING THAT ACTUALLY OUTPUTS CSS HERE!
+// Only use this for things like variables and mixins :)
+
+@import 'colors';
+@import 'variables';

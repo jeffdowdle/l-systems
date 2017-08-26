@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './app-layout.css';
+import './app-layout.scss';
 
 export const AppLayout = props => (
   <div styleName="layout-container">
@@ -19,12 +19,5 @@ export const AppLayoutMain = props => (
     {props.children}
   </div>
 );
-
-AppLayout.propTypes = {
-  rules: PropTypes.array.isRequired,
-  onRemoveRule: PropTypes.func.isRequired,
-  onAddRule: PropTypes.func.isRequired,
-  onUpdateRule: PropTypes.func.isRequired,
-};
 
 export default AppLayout;

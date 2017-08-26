@@ -5,9 +5,9 @@
 }
 
 .layout-side-bar {
-  background: #C2C2C2;
+  background: map-get($colors, primary);
 }
 
 .layout-main {
-  background: #FFFFFF;
+  background: map-get($colors, secondary);
 }
