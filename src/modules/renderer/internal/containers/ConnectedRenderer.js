@@ -1,23 +1,14 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import PropTypes from 'prop-types';
-import * as selectors from '../selectors';
+import { selectors as rulesSelectors } from '../../../rules';
+import { selectors as axiomSelectors } from '../../../axiom';
 import Renderer from '../../../../components/Renderer';
 
-const ConnectedRenderer = ({
-  instructions,
-}) => (
-  <Renderer
-    instructions={instructions}
-  />
-);
-
-ConnectedRenderer.propTypes = {
-  instructions: PropTypes.string.isRequired,
-};
+const ConnectedRenderer = props => <Renderer {...props} />;
 
 const mapStateToProps = state => ({
-  instructions: selectors.getInstructions(state),
+  rules: rulesSelectors.getRules(state),
+  axiom: axiomSelectors.getAxiom(state),
 });
 
 export default connect(mapStateToProps, null)(ConnectedRenderer);

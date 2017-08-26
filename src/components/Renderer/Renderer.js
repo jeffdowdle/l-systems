@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TurtleRenderer from '../../modules/lsystem/TurtleRenderer';
+import { expand } from '../../modules/lsystem/functions';
 
 class Renderer extends React.Component {
   constructor(props) {
@@ -17,8 +18,10 @@ class Renderer extends React.Component {
   }
 
   draw() {
+    const { rules, axiom } = this.props;
+
     const turtle = new TurtleRenderer(this.canvas);
-    turtle.draw(this.props.instructions);
+    turtle.draw(expand(rules, axiom));
   }
 
   render() {
@@ -35,7 +38,8 @@ Renderer.defaultProps = {
 };
 
 Renderer.propTypes = {
-  instructions: PropTypes.string.isRequired,
+  axiom: PropTypes.string.isRequired,
+  rules: PropTypes.array.isRequired,
 };
 
 export default Renderer;
