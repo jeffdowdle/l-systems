@@ -1,0 +1,17 @@
+@mixin button() {
+  padding: 0 $baseline;
+  line-height: 2.5;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  background: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 13px;
+
+  outline: none;
+
+  &:hover,
+  &:focus {
+    background: $form-input-color-focus;
+  }
+}

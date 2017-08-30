@@ -5,20 +5,20 @@ import {
   actions as axiomActions,
   selectors as axiomSelectors,
 } from '../../../axiom';
+import TextInput from '../../../../form/TextInput';
 
 const ProductionRules = ({
   axiom,
   onChange,
 }) => (
-  <label>
-    Axiom:
-    <input
-      value={axiom}
-      onChange={(e) => {
-        onChange(e.target.value);
-      }}
-    />
-  </label>
+  <TextInput
+    id="axiom"
+    label="Axiom"
+    value={axiom}
+    onChange={(e) => {
+      onChange(e.target.value);
+    }}
+  />
 );
 
 ProductionRules.propTypes = {

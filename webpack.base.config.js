@@ -13,18 +13,23 @@ module.exports = {
   module: {
     rules: [
 
-      // normalize.css, gets included before all other styles
+      // normalize.css and global.scss, gets included before all other styles
       {
-        include: path.resolve(__dirname, './node_modules/normalize.css/normalize.css'),
+        include: [
+          path.resolve(__dirname, './node_modules/normalize.css/normalize.css'),
+          path.resolve(__dirname, './src/styles/global.scss'),
+        ],
         use: [
           'style-loader',
           'css-loader',
+          'sass-loader',
         ],
       },
 
       // CSS Modules
       {
         include: path.resolve(__dirname, './src'),
+        exclude: path.resolve(__dirname, './src/styles/global.scss'),
         use: [
           'style-loader',
           'css-loader?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]',

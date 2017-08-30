@@ -2,16 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Rule from '../Rule';
 
+import './rule-list.scss';
+
 const RuleList = ({
   rules,
   onRemoveRule,
   onAddRule,
   onUpdateRule,
 }) => (
-  <div>
-    <ul>
+  <div styleName="rules">
+    <div styleName="rules-label">Rules</div>
+    <ul styleName="rule-list">
       {rules.map(r => (
-        <li key={r.id}>
+        <li styleName="rule-list-item" key={r.id}>
           <Rule
             rule={r}
             onUpdateSymbol={(symbol) => {
@@ -22,16 +25,19 @@ const RuleList = ({
             }}
           />
           <button
+            styleName="remove-rule"
             onClick={() => {
               onRemoveRule(r.id);
             }}
           >
-            -
+            x
           </button>
         </li>
       ))}
     </ul>
-    <button onClick={onAddRule}>Add rule</button>
+    <div styleName="add-rule">
+      <button onClick={onAddRule}>Add rule</button>
+    </div>
   </div>
 );
 

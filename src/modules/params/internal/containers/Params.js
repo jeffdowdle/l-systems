@@ -24,6 +24,12 @@ const paramDeclarations = [
     fieldType: 'NUMBER',
     initialValue: 90,
   },
+  {
+    id: 'testing',
+    label: 'Testing one two three',
+    fieldType: 'TEXT',
+    initialValue: 'FF+F-F[O]+F',
+  },
 ];
 
 const mapFieldTypeToComponent = (fieldType) => {

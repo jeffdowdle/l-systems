@@ -1,0 +1,41 @@
+.rules {
+  @include form-control;
+}
+
+.rules-label {
+  @include form-label;
+}
+
+.rule-list {
+  margin: 0;
+  padding: 0;
+}
+
+.rule-list-item {
+  display: flex;
+  margin-bottom: $baseline;
+}
+
+.remove-rule {
+  // TODO use an icon for this, maybe break it out into a component
+  width: 20px;
+  height: 20px;
+  display: block;
+  border: 1px solid white;
+  border-radius: 10px;
+  background: transparent;
+  color: white;
+  margin-left: 12px;
+  vertical-align: baseline;
+  line-height: 10px;
+  text-align: center;
+  margin-top: 9px;
+  padding-left: 5px;
+}
+
+.add-rule {
+  text-align: right;
+  button {
+    @include button();
+  }
+}

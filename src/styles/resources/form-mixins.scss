@@ -1,0 +1,105 @@
+@import 'form-helpers';
+
+@mixin form-control() {
+  display: block;
+  padding: 0 $baseline * 2;
+  margin-bottom: $baseline;
+}
+
+@mixin form-label() {
+  display: block;
+  color: map-get($colors, white);
+  line-height: 1.5;
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+@mixin form-input() {
+  display: block;
+  width: 100%;
+
+  line-height: 2.8;
+  font-size: 14px;
+}
+
+@mixin form-input-text() {
+  @include form-input;
+
+  padding: 0 $baseline;
+  border-radius: 3px;
+  color: map-get($colors, white);
+  border: none;
+  background: $form-input-color;
+
+  &:focus {
+    outline: none;
+    background: $form-input-color-focus;
+  }
+}
+
+@mixin form-input-range() {
+  @include form-input;
+
+  $track-height: 6px;
+  $thumb-radius: 22px;
+
+  height: $thumb-radius;
+
+  // See: https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/
+  -webkit-appearance: none; // Hides the slider so that custom slider can be made
+  width: 100%; // Specific width is required for Firefox.
+  background: transparent; // Otherwise white in Chrome
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-ms-track {
+    width: 100%;
+    cursor: pointer;
+
+    // Hides the slider so custom styles can be added
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+
+  @include range-thumb() {
+    -webkit-appearance: none;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    height: $thumb-radius;
+    width: $thumb-radius;
+    border-radius: $thumb-radius / 2;
+    margin-top: -$thumb-radius / 2 + $track-height / 2;
+    background: darken(map-get($colors, primary), 5%);
+    cursor: pointer;
+  }
+
+  @include range-track {
+    width: 100%;
+    height: $track-height;
+    cursor: pointer;
+    background: $form-input-color;
+    border-radius: $track-height / 2;
+    border: none;
+  }
+
+  &:focus {
+    @include range-thumb() {
+      border: 1px solid rgba(255, 255, 255, 1);
+    }
+
+    @include range-track {
+      width: 100%;
+      height: $track-height;
+      cursor: pointer;
+      background: $form-input-color;
+      border-radius: $track-height / 2;
+      border: none;
+
+      background: $form-input-color-focus;
+    }
+  }
+}
+
+

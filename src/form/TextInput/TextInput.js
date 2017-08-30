@@ -1,5 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Control from '../Control';
+import Label from '../Label';
+
+import './text-input.scss';
 
 const fieldId = id => `param-${id}`;
 
@@ -9,15 +13,16 @@ const TextInput = ({
   value,
   onChange,
 }) => (
-  <div>
-    <label htmlFor={fieldId(id)}>{label}</label>
+  <Control>
+    <Label htmlFor={fieldId}>{label}</Label>
     <input
       id={fieldId(id)}
+      styleName="text-input"
       type="text"
       value={value}
       onChange={e => onChange(e.target.value)}
     />
-  </div>
+  </Control>
 );
 
 TextInput.propTypes = {

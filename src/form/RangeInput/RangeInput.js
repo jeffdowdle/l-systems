@@ -1,7 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import Control from '../Control';
+import Label from '../Label';
+
+import './range-input.scss';
 
 const fieldId = id => `param-${id}`;
+
+const range = (lowEnd, highEnd) => {
+  const list = [];
+  for (let i = lowEnd; i <= highEnd; i += 1) {
+    list.push(i);
+  }
+  return list;
+};
 
 const RangeInput = ({
   id,
@@ -11,17 +24,37 @@ const RangeInput = ({
   value,
   onChange,
 }) => (
-  <div>
-    <label htmlFor={fieldId(id)}>{label}</label>
-    <input
-      id={fieldId(id)}
-      type="range"
-      value={value}
-      onChange={e => onChange(parseInt(e.target.value, 10))}
-      min={min}
-      max={max}
-    />
-  </div>
+  <Control>
+    <Label htmlFor={fieldId}>{label}</Label>
+    <div>
+      <input
+        id={fieldId(id)}
+        styleName="range-input"
+        type="range"
+        value={value}
+        onChange={e => onChange(parseInt(e.target.value, 10))}
+        min={min}
+        max={max}
+      />
+      <div styleName="range-labels" aria-hidden="true">
+        {range(min, max).map((n) => {
+          const styles = classNames({
+            'range-label': true,
+            'range-label-active': n === value,
+          });
+
+          return (
+            <span
+              styleName={styles}
+              style={{ left: `${(100 / (max - min)) * (n - 1)}%` }}
+            >
+              {n}
+            </span>
+          );
+        })}
+      </div>
+    </div>
+  </Control>
 );
 
 RangeInput.propTypes = {

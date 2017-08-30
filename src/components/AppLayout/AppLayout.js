@@ -10,7 +10,14 @@ export const AppLayout = props => (
 
 export const AppLayoutSideBar = props => (
   <div styleName="layout-side-bar">
-    {props.children}
+    <div styleName="side-bar-main">
+      {props.children}
+    </div>
+    {props.footer &&
+      <div styleName="side-bar-footer">
+        {props.footer}
+      </div>
+    }
   </div>
 );
 

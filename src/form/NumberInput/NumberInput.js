@@ -1,5 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Control from '../Control';
+import Label from '../Label';
+
+import './number-input.scss';
 
 const fieldId = id => `param-${id}`;
 
@@ -9,15 +13,16 @@ const NumberInput = ({
   value,
   onChange,
 }) => (
-  <div>
-    <label htmlFor={fieldId(id)}>{label}</label>
+  <Control>
+    <Label htmlFor={fieldId}>{label}</Label>
     <input
+      styleName="number-input"
       id={fieldId(id)}
       type="number"
       value={value}
       onChange={e => onChange(parseInt(e.target.value, 10))}
     />
-  </div>
+  </Control>
 );
 
 NumberInput.propTypes = {

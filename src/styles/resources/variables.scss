@@ -1,1 +1,9 @@
 // VARIABLES
+$baseline: 12px;
+
+$side-bar-width: 320px;
+$side-bar-gutter: $baseline * 2;
+
+$form-input-color: rgba(255, 255, 255, 0.13);
+$form-input-color-focus: rgba(255, 255, 255, 0.2);
+$form-input-range-thumb-color: darken(map-get($colors, primary), 5%);

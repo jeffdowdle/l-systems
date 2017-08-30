@@ -1,13 +1,29 @@
 .layout-container {
   display: grid;
-  grid-template-columns: [aside-start] 300px [aside-end main-start] auto [main-end];
+  grid-template-columns: [aside-start] $side-bar-width [aside-end main-start] auto [main-end];
   grid-template-rows: 100vh;
 }
 
 .layout-side-bar {
   background: map-get($colors, primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.side-bar-main {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.side-bar-footer {
+  flex-shrink: 0;
+
+  padding: 18px $baseline * 2;
+  text-align: right;
+  background:rgba(0, 0, 0, 0.48);
 }
 
 .layout-main {
-  background: map-get($colors, secondary);
+  background: map-get($colors, white);
+  overflow-y: auto;
 }
