@@ -3,8 +3,13 @@ import * as types from './actionTypes';
 const initialState = [
   {
     id: -1,
+    symbol: 'X',
+    successor: 'F[-X][X]F[-X]+FX',
+  },
+  {
+    id: -2,
     symbol: 'F',
-    successor: 'F+F-F-F+F',
+    successor: 'FF',
   },
 ];
 

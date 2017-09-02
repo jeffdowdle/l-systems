@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 
-const initialState = 'F';
+const initialState = 'X';
 
 const axiom = (state = initialState, action) => {
   switch (action.type) {

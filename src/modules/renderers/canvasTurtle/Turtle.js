@@ -6,7 +6,7 @@ const defaultParams = {
 
   startX: 0,
   startY: 0,
-  startAngle: 0,
+  startAngle: -90,
 };
 
 export default class BaseTurtle {
@@ -17,6 +17,8 @@ export default class BaseTurtle {
     this.posY = this.params.startY;
 
     this.heading = this.params.startAngle;
+
+    this.stack = [];
 
     this.boundingBox = {
       left: this.posX,
@@ -64,6 +66,22 @@ export default class BaseTurtle {
 
   turnRight() {
     this.heading -= this.params.angle;
+  }
+
+  push() {
+    this.stack.push({
+      posX: this.posX,
+      posY: this.posY,
+      heading: this.heading,
+    });
+  }
+
+  pop() {
+    const popped = this.stack.pop();
+
+    this.posX = popped.posX;
+    this.posY = popped.posY;
+    this.heading = popped.heading;
   }
 }
 

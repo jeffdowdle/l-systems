@@ -28,6 +28,8 @@ const TurtleCommand = {
   DRAW_FORWARD: 'F',
   TURN_LEFT: '+',
   TURN_RIGHT: '-',
+  PUSH: '[',
+  POP: ']',
 };
 
 const BASE_LENGTH = 1;
@@ -111,6 +113,12 @@ export default class TurtleRenderer {
         break;
       case TurtleCommand.TURN_RIGHT:
         turtle.turnRight();
+        break;
+      case TurtleCommand.PUSH:
+        turtle.push();
+        break;
+      case TurtleCommand.POP:
+        turtle.pop();
         break;
       default:
         break;
