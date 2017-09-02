@@ -1,12 +1,8 @@
 import * as types from './actionTypes';
 
-export const registerParam = declaration => ({
-  type: types.REGISTER_PARAM,
-  declaration,
-});
-
-export const updateParam = (id, value) => ({
+export const updateParam = (renderer, param, value) => ({
   type: types.UPDATE_PARAM,
-  id,
+  renderer,
+  param,
   value,
 });

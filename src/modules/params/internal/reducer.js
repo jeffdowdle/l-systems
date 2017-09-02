@@ -1,24 +1,28 @@
 import * as types from './actionTypes';
+import { paramDefinitions } from '../../../modules/renderers';
 
-const initialState = [];
+const initialState = {};
+Object.keys(paramDefinitions).forEach((key) => {
+  initialState[key] = paramDefinitions[key].map(d => ({
+    id: d.id,
+    value: d.initialValue,
+  }));
+});
 
-const param = (state, action) => {
+const renderer = (state, action) => {
   switch (action.type) {
-    case types.REGISTER_PARAM:
-      return {
-        id: action.declaration.id,
-        value: action.declaration.initialValue,
-      };
-
     case types.UPDATE_PARAM:
-      if (state.id === action.id) {
-        return Object.assign(
-          {},
-          state,
-          { value: action.value },
-        );
-      }
-      return state;
+      return state.map((param) => {
+        if (param.id === action.param) {
+          return Object.assign(
+            {},
+            param,
+            { value: action.value },
+          );
+        }
+
+        return param;
+      });
 
     default:
       return state;
@@ -27,11 +31,14 @@ const param = (state, action) => {
 
 const params = (state = initialState, action) => {
   switch (action.type) {
-    case types.REGISTER_PARAM:
-      return state.concat(param(undefined, action));
-
     case types.UPDATE_PARAM:
-      return state.map(p => param(p, action));
+      return Object.assign(
+        {},
+        state,
+        {
+          [`${action.renderer}`]: renderer(state[action.renderer], action),
+        },
+      );
 
     default:
       return state;

@@ -1,6 +1,29 @@
 import { DryRunTurtle, CanvasTurtle } from './Turtle';
 import TurtleUtils from './TurtleUtils';
 
+export const paramDeclarations = [
+  {
+    id: 'iterations',
+    label: 'Iterations',
+    fieldType: 'RANGE',
+    initialValue: 3,
+    min: 1,
+    max: 8,
+  },
+  {
+    id: 'angle',
+    label: 'Angle',
+    fieldType: 'NUMBER',
+    initialValue: 90,
+  },
+  {
+    id: 'testing',
+    label: 'Testing one two three',
+    fieldType: 'TEXT',
+    initialValue: 'FF+F-F[O]+F',
+  },
+];
+
 const TurtleCommand = {
   DRAW_FORWARD: 'F',
   TURN_LEFT: '+',

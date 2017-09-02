@@ -45,8 +45,10 @@ const RangeInput = ({
 
           return (
             <span
+              key={n}
               styleName={styles}
               style={{ left: `${(100 / (max - min)) * (n - 1)}%` }}
+              onClick={() => onChange(n)}
             >
               {n}
             </span>

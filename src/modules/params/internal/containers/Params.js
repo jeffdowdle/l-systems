@@ -8,29 +8,10 @@ import {
 import TextInput from '../../../../form/TextInput';
 import RangeInput from '../../../../form/RangeInput';
 import NumberInput from '../../../../form/NumberInput';
-
-const paramDeclarations = [
-  {
-    id: 'iterations',
-    label: 'Iterations',
-    fieldType: 'RANGE',
-    initialValue: 3,
-    min: 1,
-    max: 8,
-  },
-  {
-    id: 'angle',
-    label: 'Angle',
-    fieldType: 'NUMBER',
-    initialValue: 90,
-  },
-  {
-    id: 'testing',
-    label: 'Testing one two three',
-    fieldType: 'TEXT',
-    initialValue: 'FF+F-F[O]+F',
-  },
-];
+import {
+  paramDefinitions,
+  selectors as rendererSelectors,
+} from '../../../renderers';
 
 const mapFieldTypeToComponent = (fieldType) => {
   switch (fieldType) {
@@ -44,50 +25,45 @@ const mapFieldTypeToComponent = (fieldType) => {
   }
 };
 
-class Params extends React.Component {
-  componentWillMount() {
-    paramDeclarations.forEach((declaration) => {
-      this.props.onRegisterParam(declaration);
-    });
-  }
+const Params = ({
+  params,
+  renderer,
+  onUpdateParam,
+}) => {
+  if (!params) { return null; }
 
-  render() {
-    return (
-      <div>
-        {this.props.params.map((param) => {
-          const declaration = paramDeclarations.find(d => d.id === param.id);
-          const Field = mapFieldTypeToComponent(declaration.fieldType);
+  return (
+    <div>
+      {params.map((param) => {
+        const declaration = paramDefinitions[renderer].find(d => d.id === param.id);
+        const Field = mapFieldTypeToComponent(declaration.fieldType);
 
-          return (
-            <Field
-              {...declaration}
-              key={param.id}
-              value={param.value}
-              onChange={(value) => {
-                this.props.onUpdateParam(param.id, value);
-              }}
-            />
-          );
-        })}
-      </div>
-    );
-  }
-}
+        return (
+          <Field
+            {...declaration}
+            key={param.id}
+            value={param.value}
+            onChange={(value) => {
+              onUpdateParam(renderer, param.id, value);
+            }}
+          />
+        );
+      })}
+    </div>
+  );
+};
 
 Params.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  params: paramsSelectors.getParams(state),
+  params: paramsSelectors.getCurrentRendererParams(state),
+  renderer: rendererSelectors.getCurrentRenderer(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  onRegisterParam: (declaration) => {
-    dispatch(paramsActions.registerParam(declaration));
-  },
-
-  onUpdateParam: (id, value) => {
-    dispatch(paramsActions.updateParam(id, value));
+  onUpdateParam: (renderer, param, value) => {
+    dispatch(paramsActions.updateParam(renderer, param, value));
   },
 });
 
