@@ -79,9 +79,11 @@ export default class BaseTurtle {
   pop() {
     const popped = this.stack.pop();
 
-    this.posX = popped.posX;
-    this.posY = popped.posY;
-    this.heading = popped.heading;
+    if (popped) {
+      this.posX = popped.posX;
+      this.posY = popped.posY;
+      this.heading = popped.heading;
+    }
   }
 }
 
