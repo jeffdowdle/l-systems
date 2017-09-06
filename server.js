@@ -1,0 +1,19 @@
+const path = require('path');
+const express = require('express')
+const app = express()
+
+const defaultPort = 3000;
+const dist = path.join(__dirname, 'dist');
+const indexFile = path.join(dist, 'index.html');
+
+app.set('port', process.env.PORT || defaultPort);
+
+app.use(express.static(dist));
+
+app.get('*', function (req, res) {
+  res.sendFile(indexFile)
+})
+
+app.listen(app.get('port'), function () {
+  console.log(`LSYSTEM: App started on port ${app.get('port')}!`)
+})
