@@ -1,5 +1,6 @@
 {
   "presets": [
+    "react",
     ["env", {
       "targets": {
         "node": "current"
@@ -8,7 +9,6 @@
     }]
   ],
   "plugins": [
-    "transform-react-jsx",
     ["react-css-modules", {
       "filetypes": {
         ".scss": {

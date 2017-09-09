@@ -1,9 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const DIST_PATH = path.resolve(__dirname, 'dist');
+const DIST_PATH = path.resolve(__dirname, 'build/dist');
 
 module.exports = {
   stats: {
@@ -24,11 +23,13 @@ module.exports = {
           path.resolve(__dirname, './node_modules/normalize.css/normalize.css'),
           path.resolve(__dirname, './src/styles/global.scss'),
         ],
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-        ],
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader',
+            'sass-loader',
+          ],
+        }),
       },
 
       // CSS Modules
@@ -62,16 +63,15 @@ module.exports = {
       // Javascript
       {
         test: /\.js$/,
-        include: path.resolve(__dirname, './src'),
-        loader: 'babel-loader',
+        exclude: /node_modules/,
+        use: [
+          'babel-loader',
+        ],
       },
 
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: 'src/index.ejs',
-    }),
     new ExtractTextPlugin('styles.css'),
     new webpack.DefinePlugin({
       'process.env': {

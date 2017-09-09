@@ -1,10 +1,18 @@
-const baseConfig = require('./webpack.base.config');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const baseConfig = require('./webpack.client.config');
 
-const extendedConfig = {
-  devtool: 'source-map',
-  devServer: {
-    port: 8080,
-  },
+const devConfig = Object.assign({}, baseConfig);
+
+devConfig.devtool = 'source-map';
+
+devConfig.devServer = {
+  port: 8080,
 };
 
-module.exports = Object.assign({}, baseConfig, extendedConfig);
+const htmlPlugin = new HtmlWebpackPlugin({
+  template: 'src/index.ejs',
+});
+
+devConfig.plugins.push(htmlPlugin);
+
+module.exports = devConfig;
