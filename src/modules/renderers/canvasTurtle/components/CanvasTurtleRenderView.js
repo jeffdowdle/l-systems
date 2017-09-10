@@ -14,8 +14,8 @@ class CanvasTurtleRenderView extends React.Component {
   }
 
   draw() {
-    const { rules, axiom, params, iterations } = this.props;
-    const turtle = new CanvasTurtleRenderer(this.canvas, params);
+    const { params, commands, rules, axiom, iterations } = this.props;
+    const turtle = new CanvasTurtleRenderer(this.canvas, params, commands);
     turtle.draw(expand(rules, axiom, iterations));
   }
 
@@ -33,6 +33,7 @@ CanvasTurtleRenderView.defaultProps = {
 
 CanvasTurtleRenderView.propTypes = {
   params: PropTypes.object,
+  commands: PropTypes.object,
   axiom: PropTypes.string.isRequired,
   rules: PropTypes.array.isRequired,
   iterations: PropTypes.number.isRequired,

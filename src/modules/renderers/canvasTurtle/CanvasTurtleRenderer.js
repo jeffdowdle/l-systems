@@ -1,43 +1,14 @@
+import { CommandTypes } from './commands';
 import { DryRunTurtle, CanvasTurtle } from './Turtle';
 import TurtleUtils from './TurtleUtils';
-
-export const paramDeclarations = [
-  {
-    id: 'iterations',
-    label: 'Iterations',
-    fieldType: 'RANGE',
-    initialValue: 3,
-    min: 1,
-    max: 8,
-  },
-  {
-    id: 'angle',
-    label: 'Angle',
-    fieldType: 'NUMBER',
-    initialValue: 90,
-  },
-  {
-    id: 'testing',
-    label: 'Testing one two three',
-    fieldType: 'TEXT',
-    initialValue: 'FF+F-F[O]+F',
-  },
-];
-
-const TurtleCommand = {
-  DRAW_FORWARD: 'F',
-  TURN_LEFT: '+',
-  TURN_RIGHT: '-',
-  PUSH: '[',
-  POP: ']',
-};
 
 const BASE_LENGTH = 1;
 
 export default class TurtleRenderer {
-  constructor(canvas, params) {
+  constructor(canvas, params, commands) {
     this.canvas = canvas;
     this.params = params;
+    this.commands = commands;
 
     this.canvas.width = 600;
     this.canvas.height = 600;
@@ -98,26 +69,26 @@ export default class TurtleRenderer {
   }
 
   execute(turtle, instructions) {
-    instructions.split('').forEach((command) => {
-      this.executeCommand(turtle, command);
+    instructions.split('').forEach((symbol) => {
+      this.executeCommand(turtle, symbol);
     });
   }
 
-  executeCommand(turtle, command) {
-    switch (command) {
-      case TurtleCommand.DRAW_FORWARD:
+  executeCommand(turtle, symbol) {
+    switch (this.commands[symbol]) {
+      case CommandTypes.DRAW_FORWARD:
         turtle.drawForward();
         break;
-      case TurtleCommand.TURN_LEFT:
+      case CommandTypes.TURN_LEFT:
         turtle.turnLeft();
         break;
-      case TurtleCommand.TURN_RIGHT:
+      case CommandTypes.TURN_RIGHT:
         turtle.turnRight();
         break;
-      case TurtleCommand.PUSH:
+      case CommandTypes.PUSH:
         turtle.push();
         break;
-      case TurtleCommand.POP:
+      case CommandTypes.POP:
         turtle.pop();
         break;
       default:

@@ -3,6 +3,7 @@ import { RendererChooser } from './modules/renderers';
 import { ProductionRules } from './modules/rules';
 import { Axiom } from './modules/axiom';
 import { Params } from './modules/params';
+import { Commands } from './modules/commands';
 import { Iterations } from './modules/iterations';
 import ConnectedRenderer from './modules/lsystem/containers/ConnectedRenderer';
 import UpdateButton from './components/UpdateButton';
@@ -17,6 +18,9 @@ const App = () => (
       <RendererChooser />
       <SideBarSection heading="Parameters">
         <Params />
+      </SideBarSection>
+      <SideBarSection heading="Commands">
+        <Commands />
       </SideBarSection>
       <SideBarSection heading="Rules">
         <Iterations />

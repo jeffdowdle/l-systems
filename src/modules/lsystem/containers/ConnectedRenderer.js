@@ -3,6 +3,7 @@ import React from 'react';
 import { selectors as iterationsSelectors } from '../../iterations';
 import { selectors as rulesSelectors } from '../../rules';
 import { selectors as axiomSelectors } from '../../axiom';
+import { selectors as commandsSelectors } from '../../commands';
 import {
   actions as paramsActions,
   selectors as paramsSelectors,
@@ -55,6 +56,7 @@ class ConnectedRenderer extends React.Component {
 const mapStateToProps = state => ({
   rendererId: renderersSelectors.getCurrentRenderer(state),
   params: paramsSelectors.getFlattenedParamsForRenderer(state),
+  commands: commandsSelectors.getFlattenedCommandsForRenderer(state),
   rules: rulesSelectors.getRules(state),
   axiom: axiomSelectors.getAxiom(state),
   iterations: iterationsSelectors.getIterations(state),

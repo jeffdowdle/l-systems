@@ -1,0 +1,25 @@
+.command {
+  @include form-control();
+  display: flex;
+  align-items: center;
+}
+
+.symbol {
+  flex-shrink: 1;
+  margin-right: $baseline;
+
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 30px;
+  height: 30px;
+  line-height: 27px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.value {
+  flex-grow: 1;
+
+  color: white;
+  font-size: 14px;
+}

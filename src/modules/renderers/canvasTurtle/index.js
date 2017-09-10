@@ -1,6 +1,7 @@
 import CanvasTurtleRenderView from './components/CanvasTurtleRenderView';
 import CanvasTurtleRenderer from './CanvasTurtleRenderer';
 import params from './params';
+import commands from './commands';
 import * as constants from './constants';
 
 export {
@@ -8,4 +9,5 @@ export {
   CanvasTurtleRenderer,
   params,
   constants,
+  commands,
 };
