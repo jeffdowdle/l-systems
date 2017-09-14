@@ -1,8 +1,8 @@
-import * as actions from './internal/actions';
-import * as actionTypes from './internal/actionTypes';
-import * as selectors from './internal/selectors';
-import reducer from './internal/reducer';
-import ProductionRules from './internal/containers/ProductionRules';
+import * as actions from './actions';
+import * as actionTypes from './actionTypes';
+import * as selectors from './selectors';
+import reducer from './reducer';
+import ProductionRules from './containers/ProductionRules';
 
 export {
   ProductionRules,

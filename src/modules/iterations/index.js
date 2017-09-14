@@ -1,8 +1,8 @@
-import * as actions from './internal/actions';
-import * as actionTypes from './internal/actionTypes';
-import * as selectors from './internal/selectors';
-import reducer from './internal/reducer';
-import Iterations from './internal/containers/Iterations';
+import * as actions from './actions';
+import * as actionTypes from './actionTypes';
+import * as selectors from './selectors';
+import reducer from './reducer';
+import Iterations from './containers/Iterations';
 
 export {
   Iterations,

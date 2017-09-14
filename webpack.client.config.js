@@ -14,6 +14,13 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js',
   },
+  resolve: {
+    alias: {
+      components: path.resolve(__dirname, 'src/components/'),
+      modules: path.resolve(__dirname, 'src/modules/'),
+      form: path.resolve(__dirname, 'src/form/'),
+    },
+  },
   module: {
     rules: [
 

@@ -10,5 +10,12 @@
     "browser": true,
     "node": true,
     "jest": true
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.client.config.js"
+      }
+    }
   }
 }

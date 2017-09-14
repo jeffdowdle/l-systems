@@ -1,5 +1,5 @@
+import { commandDefinitions } from 'modules/renderers';
 import * as types from './actionTypes';
-import { commandDefinitions } from '../../../modules/renderers';
 
 const initialState = {};
 Object.keys(commandDefinitions).forEach((key) => {

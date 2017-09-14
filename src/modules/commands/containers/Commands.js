@@ -3,14 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   selectors as commandsSelectors,
-} from '../../../commands';
+} from 'modules/commands';
 import {
   commandDefinitions,
   selectors as rendererSelectors,
-} from '../../../renderers';
-import Control from '../../../../form/Control';
-import Label from '../../../../form/Label';
-import Command from '../../../../components/Command';
+} from 'modules/renderers';
+import Command from 'components/Command';
 
 const Params = ({
   commands,

@@ -1,5 +1,5 @@
+import { paramDefinitions } from 'modules/renderers';
 import * as types from './actionTypes';
-import { paramDefinitions } from '../../../modules/renderers';
 
 const initialState = {};
 Object.keys(paramDefinitions).forEach((key) => {

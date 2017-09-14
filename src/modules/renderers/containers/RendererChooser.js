@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {
   selectors as rendererSelectors,
   actions as rendererActions,
-} from '../../renderers';
+} from 'modules/renderers';
 
 const RendererChooser = ({
   renderer,

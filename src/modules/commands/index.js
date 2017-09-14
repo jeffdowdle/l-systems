@@ -1,8 +1,8 @@
-import * as actions from './internal/actions';
-import * as actionTypes from './internal/actionTypes';
-import * as selectors from './internal/selectors';
-import reducer from './internal/reducer';
-import Commands from './internal/containers/Commands';
+import * as actions from './actions';
+import * as actionTypes from './actionTypes';
+import * as selectors from './selectors';
+import reducer from './reducer';
+import Commands from './containers/Commands';
 
 export {
   Commands,

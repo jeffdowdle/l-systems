@@ -1,12 +1,12 @@
 import { devToolsEnhancer } from 'redux-devtools-extension';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 import 'normalize.css/normalize.css';
 import './styles/global.scss';
 
-import React from 'react';
-import ReactDOM from 'react-dom';
 import rootReducer from './rootReducer';
 import App from './App';
 

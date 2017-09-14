@@ -1,8 +1,8 @@
 import deepFreeze from 'deep-freeze';
-import reducer from '../internal/reducer';
-import * as types from '../internal/actionTypes';
+import reducer from 'modules/iterations/reducer';
+import * as types from 'modules/iterations/actionTypes';
 
-jest.unmock('../internal/actions');
+jest.unmock('modules/iterations/actions');
 
 describe('iterations/UPDATE_ITERATIONS', () => {
   it('Updates the iterations', () => {

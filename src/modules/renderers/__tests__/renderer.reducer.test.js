@@ -1,8 +1,8 @@
 import deepFreeze from 'deep-freeze';
-import reducer from '../reducer';
-import * as types from '../actionTypes';
+import reducer from 'modules/renderers/reducer';
+import * as types from 'modules/renderers/actionTypes';
 
-jest.unmock('../actions');
+jest.unmock('modules/renderers/actions');
 
 describe('renderers/UPDATE_RENDERER', () => {
   it('Updates the current renderer', () => {

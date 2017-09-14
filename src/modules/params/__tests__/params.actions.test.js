@@ -1,4 +1,4 @@
-import * as actions from '../internal/actions';
+import * as actions from 'modules/params/actions';
 
 describe('Params action creators behave correctly', () => {
   it('updateParam(renderer, param, value)', () => {

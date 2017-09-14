@@ -7,6 +7,9 @@ devConfig.devtool = 'source-map';
 
 devConfig.devServer = {
   port: 8080,
+  stats: {
+    children: false,
+  },
 };
 
 const htmlPlugin = new HtmlWebpackPlugin({

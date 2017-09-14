@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import {
   actions as axiomActions,
   selectors as axiomSelectors,
-} from '../../../axiom';
-import TextInput from '../../../../form/TextInput';
+} from 'modules/axiom';
+import TextInput from 'form/TextInput';
 
 const ProductionRules = ({
   axiom,

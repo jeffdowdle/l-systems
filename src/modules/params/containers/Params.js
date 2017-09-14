@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import {
   actions as paramsActions,
   selectors as paramsSelectors,
-} from '../../../params';
-import TextInput from '../../../../form/TextInput';
-import RangeInput from '../../../../form/RangeInput';
-import NumberInput from '../../../../form/NumberInput';
+} from 'modules/params';
+import TextInput from 'form/TextInput';
+import RangeInput from 'form/RangeInput';
+import NumberInput from 'form/NumberInput';
 import {
   paramDefinitions,
   selectors as rendererSelectors,
-} from '../../../renderers';
+} from 'modules/renderers';
 
 const mapFieldTypeToComponent = (fieldType) => {
   switch (fieldType) {

@@ -1,18 +1,18 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { selectors as iterationsSelectors } from '../../iterations';
-import { selectors as rulesSelectors } from '../../rules';
-import { selectors as axiomSelectors } from '../../axiom';
-import { selectors as commandsSelectors } from '../../commands';
+import { selectors as iterationsSelectors } from 'modules/iterations';
+import { selectors as rulesSelectors } from 'modules/rules';
+import { selectors as axiomSelectors } from 'modules/axiom';
+import { selectors as commandsSelectors } from 'modules/commands';
 import {
   actions as paramsActions,
   selectors as paramsSelectors,
-} from '../../params';
+} from 'modules/params';
 import {
   rendererTypes,
   selectors as renderersSelectors,
-} from '../../renderers';
-import { CanvasTurtleRenderView } from '../../renderers/canvasTurtle';
+} from 'modules/renderers';
+import { CanvasTurtleRenderView } from 'modules/renderers/canvasTurtle';
 
 
 class ConnectedRenderer extends React.Component {

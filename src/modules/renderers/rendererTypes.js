@@ -1,6 +1,6 @@
 import {
   constants as canvasTurtleConstants,
-} from './canvasTurtle';
+} from 'modules/renderers/canvasTurtle';
 
 export default {
   CANVAS_TURTLE: canvasTurtleConstants.RENDERER_NAME,

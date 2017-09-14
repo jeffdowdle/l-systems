@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { expand } from 'modules/lsystem/functions';
 import CanvasTurtleRenderer from '../CanvasTurtleRenderer';
-import { expand } from '../../../../modules/lsystem/functions';
 
 class CanvasTurtleRenderView extends React.Component {
   constructor(props) {

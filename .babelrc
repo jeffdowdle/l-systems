@@ -15,6 +15,14 @@
           "syntax": "postcss-scss"
         }
       }
+    }],
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "components": "./components",
+        "form": "./form",
+        "modules": "./modules"
+      }
     }]
   ]
 }

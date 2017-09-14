@@ -1,6 +1,6 @@
 import {
   commands as canvasTurtleCommands,
-} from './canvasTurtle';
+} from 'modules/renderers/canvasTurtle';
 import rendererTypes from './rendererTypes';
 
 export default {

@@ -1,8 +1,8 @@
 import deepFreeze from 'deep-freeze';
-import reducer from '../internal/reducer';
-import * as types from '../internal/actionTypes';
+import reducer from 'modules/params/reducer';
+import * as types from 'modules/params/actionTypes';
 
-jest.unmock('../internal/actions');
+jest.unmock('modules/params/actions');
 
 describe('params/UPDATE_PARAM', () => {
   it('updates the param\'s value', () => {

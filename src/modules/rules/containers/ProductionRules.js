@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import {
   actions as rulesActions,
   selectors as rulesSelectors,
-} from '../../../rules';
-import RuleList from '../../../../components/RuleList';
+} from 'modules/rules';
+import RuleList from 'components/RuleList';
 
 const ProductionRules = props => <RuleList {...props} />;
 

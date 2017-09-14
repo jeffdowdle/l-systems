@@ -1,8 +1,8 @@
-import * as actions from './internal/actions';
-import * as actionTypes from './internal/actionTypes';
-import * as selectors from './internal/selectors';
-import reducer from './internal/reducer';
-import Axiom from './internal/containers/Axiom';
+import * as actions from 'modules/axiom/actions';
+import * as actionTypes from 'modules/axiom/actionTypes';
+import * as selectors from 'modules/axiom/selectors';
+import reducer from 'modules/axiom/reducer';
+import Axiom from 'modules/axiom/containers/Axiom';
 
 export {
   Axiom,

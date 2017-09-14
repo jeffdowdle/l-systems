@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getCurrentRenderer } from '../../renderers/selectors';
+import { getCurrentRenderer } from 'modules/renderers/selectors';
 
 export const getParams = state => state.params;
 

@@ -1,6 +1,6 @@
 import {
   params as canvasTurtleParams,
-} from './canvasTurtle';
+} from 'modules/renderers/canvasTurtle';
 import rendererTypes from './rendererTypes';
 
 export default {

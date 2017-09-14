@@ -1,1 +1,1 @@
-import * as actions from '../internal/actions';
+import * as actions from 'modules/commands/actions';

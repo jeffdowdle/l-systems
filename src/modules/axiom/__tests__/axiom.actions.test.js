@@ -1,4 +1,4 @@
-import * as actions from '../internal/actions';
+import * as actions from 'modules/axiom/actions';
 
 describe('Axiom action creators behave correctly', () => {
   it('updateAxiom(axiom)', () => {

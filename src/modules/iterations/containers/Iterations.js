@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import {
   actions as iterationsActions,
   selectors as iterationsSelectors,
-} from '../../../iterations';
-import RangeInput from '../../../../form/RangeInput';
+} from 'modules/iterations';
+import RangeInput from 'form/RangeInput';
 
 const Iterations = ({
   iterations,

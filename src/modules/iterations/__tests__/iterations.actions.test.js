@@ -1,4 +1,4 @@
-import * as actions from '../internal/actions';
+import * as actions from 'modules/iterations/actions';
 
 describe('Iterations action creators behave correctly', () => {
   it('updateIterations(iterations)', () => {
