@@ -2,12 +2,12 @@ import React from 'react';
 
 import './update-button.scss';
 
-const UpdateButton = () => (
+const UpdateButton = ({
+  onClick,
+}) => (
   <button
     styleName="update-button"
-    onClick={() => {
-      window.dispatchEvent(new Event('redraw'));
-    }}
+    onClick={onClick}
   >
     Update
   </button>

@@ -10,40 +10,39 @@ import {
 } from 'modules/params';
 import {
   rendererTypes,
+  actions as rendererActions,
   selectors as renderersSelectors,
 } from 'modules/renderers';
 import { CanvasTurtleRenderView } from 'modules/renderers/canvasTurtle';
 
 
 class ConnectedRenderer extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.handleUpdate = this.handleUpdate.bind(this);
-  }
-
   componentDidMount() {
-    window.addEventListener('redraw', this.handleUpdate);
-
-    this.handleUpdate();
+    this.update();
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('redraw', this.handleUpdate);
+  componentDidUpdate(prevProps) {
+    const wasValid = prevProps.currentRenderer.renderingIsValid;
+    const isValid = this.props.currentRenderer.renderingIsValid;
+
+    if (wasValid && !isValid) {
+      this.update();
+    }
   }
 
-  handleUpdate() {
+  update() {
     if (this.renderer && this.renderer.draw) {
+      this.props.onValidateRendering();
       this.renderer.draw();
     }
   }
 
   render() {
-    const { rendererId } = this.props;
+    const { currentRenderer } = this.props;
 
     let Renderer;
 
-    switch (rendererId) {
+    switch (currentRenderer.type) {
       case rendererTypes.CANVAS_TURTLE:
       default:
         Renderer = CanvasTurtleRenderView;
@@ -54,7 +53,7 @@ class ConnectedRenderer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  rendererId: renderersSelectors.getCurrentRenderer(state),
+  currentRenderer: renderersSelectors.selectRenderer(state),
   params: paramsSelectors.getFlattenedParamsForRenderer(state),
   commands: commandsSelectors.getFlattenedCommandsForRenderer(state),
   rules: rulesSelectors.getRules(state),
@@ -66,6 +65,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onRegisterParam: (renderer, declaration) => {
     dispatch(paramsActions.registerParam(renderer, declaration));
+  },
+  onValidateRendering: () => {
+    dispatch(rendererActions.validateRendering());
   },
 });
 

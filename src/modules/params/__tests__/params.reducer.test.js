@@ -92,3 +92,68 @@ describe('params/UPDATE_PARAM', () => {
     expect(reducer(afterOnce, actionTwo)).toEqual(afterTwice);
   });
 });
+
+
+describe('params/LOAD_PARAMS', () => {
+  it('loads a new set of param values', () => {
+    const before = {
+      testRenderer: [
+        {
+          id: 'testId_1',
+          value: 'testing one',
+        },
+        {
+          id: 'testId_2',
+          value: 'testing two',
+        },
+      ],
+      otherRenderer: [
+        {
+          id: 'testId_1',
+          value: 'testing one',
+        },
+      ],
+    };
+
+    const action = {
+      type: types.LOAD_PARAMS,
+      renderer: 'otherRenderer',
+      params: [
+        {
+          id: 'new1',
+          value: 'new one',
+        },
+        {
+          id: 'new2',
+          value: 'new two',
+        },
+      ],
+    };
+
+    const after = {
+      testRenderer: [
+        {
+          id: 'testId_1',
+          value: 'testing one',
+        },
+        {
+          id: 'testId_2',
+          value: 'testing two',
+        },
+      ],
+      otherRenderer: [
+        {
+          id: 'new1',
+          value: 'new one',
+        },
+        {
+          id: 'new2',
+          value: 'new two',
+        },
+      ],
+    };
+
+    deepFreeze(before);
+    expect(reducer(before, action)).toEqual(after);
+  });
+});

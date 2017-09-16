@@ -11,4 +11,24 @@ describe('Renderer action creators behave correctly', () => {
 
     expect(result).toEqual(expected);
   });
+
+  it('invalidateRendering()', () => {
+    const expected = {
+      type: 'renderers/INVALIDATE_RENDERING',
+    };
+
+    const result = actions.invalidateRendering();
+
+    expect(result).toEqual(expected);
+  });
+
+  it('validateRendering()', () => {
+    const expected = {
+      type: 'renderers/VALIDATE_RENDERING',
+    };
+
+    const result = actions.validateRendering();
+
+    expect(result).toEqual(expected);
+  });
 });

@@ -1,6 +1,15 @@
 import * as types from './actionTypes';
 
 let ruleId = 0;
+export const loadRules = rules => ({
+  type: types.LOAD_RULES,
+  rules: rules.map((rule) => {
+    ruleId += 1;
+
+    return Object.assign({}, rule, { id: ruleId });
+  }),
+});
+
 export const addRule = () => {
   ruleId += 1;
 
@@ -20,3 +29,4 @@ export const updateRule = (id, values) => ({
   id,
   values,
 });
+

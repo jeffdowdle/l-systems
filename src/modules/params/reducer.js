@@ -11,6 +11,9 @@ Object.keys(paramDefinitions).forEach((key) => {
 
 const renderer = (state, action) => {
   switch (action.type) {
+    case types.LOAD_PARAMS:
+      return [...action.params];
+
     case types.UPDATE_PARAM:
       return state.map((param) => {
         if (param.id === action.param) {
@@ -31,6 +34,15 @@ const renderer = (state, action) => {
 
 const params = (state = initialState, action) => {
   switch (action.type) {
+    case types.LOAD_PARAMS:
+      return Object.assign(
+        {},
+        state,
+        {
+          [`${action.renderer}`]: renderer(state[action.renderer], action),
+        },
+      );
+
     case types.UPDATE_PARAM:
       return Object.assign(
         {},

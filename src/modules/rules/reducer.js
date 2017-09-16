@@ -1,3 +1,4 @@
+import update from 'immutability-helper';
 import * as types from './actionTypes';
 
 const initialState = [
@@ -45,6 +46,9 @@ const rule = (state, action) => {
 
 const rules = (state = initialState, action) => {
   switch (action.type) {
+    case types.LOAD_RULES:
+      return update(state, { $set: action.rules });
+
     case types.ADD_RULE:
       return state.concat(rule(undefined, action));
 
