@@ -1,0 +1,39 @@
+.preset-card {
+  border: 1px solid $form-input-color-focus;
+  border-bottom: none;
+  color: map-get($colors, white);
+  font-size: 14px;
+
+  display: flex;
+  justify-content: space-between;
+
+  &:first-child {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+
+  &:last-child {
+    border-bottom: 1px solid $form-input-color-focus;
+
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+}
+
+.title {
+  padding: 12px;
+}
+
+.load-preset {
+  outline: none;
+
+  color: map-get($colors, white);
+  background: $form-input-color;
+  padding: 12px;
+  border: none;
+
+  &:hover,
+  &:focus {
+    background: $form-input-color-focus;
+  }
+}

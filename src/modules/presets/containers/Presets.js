@@ -8,28 +8,25 @@ import {
 import TextInput from 'form/TextInput';
 import presetData from 'modules/presets/presetData';
 import Preset from 'modules/presets/models/Preset';
+import PresetList from 'components/PresetList';
 
 const Presets = ({
-  onClick,
+  onLoadPreset
 }) => (
-  <div>
-    <button onClick={() => { onClick(new Preset(presetData[0])) }}>
-      load 1
-    </button>
-    <button onClick={() => { onClick(new Preset(presetData[1])) }}>
-      load 2
-    </button>
-  </div>
+  <PresetList
+    onLoadPreset={onLoadPreset}
+    presets={
+      presetData.map(d => new Preset(d))
+    }
+  />
 );
 
 Presets.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-
-
 const mapDispatchToProps = dispatch => ({
-  onClick: (preset) => {
+  onLoadPreset: (preset) => {
     dispatch(presetsActions.loadPreset(preset));
   },
 });

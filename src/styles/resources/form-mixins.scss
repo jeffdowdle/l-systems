@@ -37,6 +37,23 @@
   }
 }
 
+@mixin form-input-select() {
+  @include form-input;
+
+  appearance: none;
+
+  padding: 0 $baseline;
+  border-radius: 3px;
+  color: map-get($colors, white);
+  border: none;
+  background: $form-input-color;
+
+  &:focus {
+    outline: none;
+    background: $form-input-color-focus;
+  }
+}
+
 @mixin form-input-range() {
   @include form-input;
 

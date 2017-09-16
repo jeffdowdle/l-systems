@@ -17,9 +17,11 @@ const App = () => (
     <AppLayoutSideBar
       footer={<ConnectedUpdateButton />}
     >
-      <Presets />
-      <RendererChooser />
-      <SideBarSection heading="Parameters">
+      <SideBarSection heading="Presets">
+        <Presets />
+      </SideBarSection>
+      <SideBarSection heading="Renderer">
+        <RendererChooser />
         <Params />
       </SideBarSection>
       <SideBarSection heading="Commands">

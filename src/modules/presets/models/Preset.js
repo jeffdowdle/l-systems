@@ -1,7 +1,12 @@
 export default class Preset {
   constructor(data) {
+    this.title = 'Untitled preset';
     this.lsystem = {};
     this.renderer = {};
+
+    if (data && data.meta) {
+      this.title = data.meta.title || this.title;
+    }
 
     if (data && data.lsystem) {
       this.lsystem = data.lsystem;
