@@ -8,7 +8,7 @@ import {
   commandDefinitions,
   selectors as rendererSelectors,
 } from 'modules/renderers';
-import Command from 'components/Command';
+import CommandList from 'components/CommandList';
 
 const Params = ({
   commands,
@@ -17,15 +17,16 @@ const Params = ({
   if (!commands) { return null; }
 
   return (
-    <div>
-      {commands.map((command) => {
-        const definition = commandDefinitions[renderer].find(d => d.id === command.value);
+    <CommandList commands={commandDefinitions[renderer]} />
+    // <div>
+    //   {commands.map((command) => {
+    //     const definition = commandDefinitions[renderer].find(d => d.id === command.value);
 
-        return (
-          <Command symbol={command.symbol} command={definition} />
-        );
-      })}
-    </div>
+    //     return (
+    //       <Command symbol={command.symbol} command={definition} />
+    //     );
+    //   })}
+    // </div>
   );
 };
 

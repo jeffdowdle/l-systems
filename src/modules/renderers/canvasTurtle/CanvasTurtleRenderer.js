@@ -79,6 +79,9 @@ export default class TurtleRenderer {
       case CommandTypes.DRAW_FORWARD:
         turtle.drawForward();
         break;
+      case CommandTypes.MOVE_FORWARD:
+        turtle.moveForward();
+        break;
       case CommandTypes.TURN_LEFT:
         turtle.turnLeft();
         break;

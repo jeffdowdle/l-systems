@@ -1,5 +1,6 @@
 export const CommandTypes = {
   DRAW_FORWARD: 'DRAW_FORWARD',
+  MOVE_FORWARD: 'MOVE_FORWARD',
   TURN_LEFT: 'TURN_LEFT',
   TURN_RIGHT: 'TURN_RIGHT',
   PUSH: 'PUSH',
@@ -10,7 +11,12 @@ export default [
   {
     id: CommandTypes.DRAW_FORWARD,
     label: 'Draw forward',
-    defaultSymbols: ['F'],
+    defaultSymbols: ['F', 'G', 'H', 'I', 'J'],
+  },
+  {
+    id: CommandTypes.MOVE_FORWARD,
+    label: 'Move forward',
+    defaultSymbols: ['f', 'g', 'h', 'i', 'j'],
   },
   {
     id: CommandTypes.TURN_LEFT,

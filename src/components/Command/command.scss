@@ -1,11 +1,12 @@
 .command {
   @include form-control();
+}
+
+.symbols {
   display: flex;
-  align-items: center;
 }
 
 .symbol {
-  flex-shrink: 1;
   margin-right: $baseline;
 
   color: white;
@@ -18,8 +19,5 @@
 }
 
 .value {
-  flex-grow: 1;
-
-  color: white;
-  font-size: 14px;
+  @include form-label();
 }

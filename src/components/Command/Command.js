@@ -8,12 +8,16 @@ const Command = ({
   command,
 }) => (
   <div styleName="command">
-    <div styleName="symbol">
-      {symbol}
-    </div>
-
     <div styleName="value">
       {command.label}
+    </div>
+
+    <div styleName="symbols">
+      {command.defaultSymbols.map(s => (
+        <div styleName="symbol">
+          {s}
+        </div>
+      ))}
     </div>
   </div>
 );
