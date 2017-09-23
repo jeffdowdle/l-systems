@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getCurrentRenderer } from 'modules/renderers/selectors';
+import { getCurrentRenderer } from 'modules/renderer/selectors';
 
 export const getCommands = state => state.commands;
 
@@ -30,4 +30,3 @@ export const getFlattenedCommandsForRenderer = createSelector(
     return flattened;
   },
 );
-

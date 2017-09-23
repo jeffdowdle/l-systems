@@ -11,7 +11,7 @@ import NumberInput from 'form/NumberInput';
 import {
   paramDefinitions,
   selectors as rendererSelectors,
-} from 'modules/renderers';
+} from 'modules/renderer';
 
 const mapFieldTypeToComponent = (fieldType) => {
   switch (fieldType) {
@@ -35,12 +35,12 @@ const Params = ({
   return (
     <div>
       {params.map((param) => {
-        const declaration = paramDefinitions[renderer].find(d => d.id === param.id);
-        const Field = mapFieldTypeToComponent(declaration.fieldType);
+        const definition = renderer.params.find(p => p.id === param.id);
+        const Field = mapFieldTypeToComponent(definition.fieldType);
 
         return (
           <Field
-            {...declaration}
+            {...definition}
             key={param.id}
             value={param.value}
             onChange={(value) => {
@@ -58,7 +58,7 @@ Params.propTypes = {
 
 const mapStateToProps = state => ({
   params: paramsSelectors.getCurrentRendererParams(state),
-  renderer: rendererSelectors.getCurrentRenderer(state),
+  renderer: rendererSelectors.getRenderer(state),
 });
 
 const mapDispatchToProps = dispatch => ({

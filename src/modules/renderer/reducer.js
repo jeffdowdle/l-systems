@@ -1,10 +1,10 @@
 import update from 'immutability-helper';
 
 import * as types from './actionTypes';
-import rendererTypes from './rendererTypes';
 
 const initialState = {
-  type: rendererTypes.CANVAS_TURTLE,
+  type: 'RENDERER_2D',
+  strategy: 'RAF_CANVAS',
   renderingIsValid: false,
 };
 
@@ -13,6 +13,11 @@ const renderer = (state = initialState, action) => {
     case types.UPDATE_RENDERER:
       return update(state, {
         type: { $set: action.renderer },
+      });
+
+    case types.UPDATE_RENDER_STRATEGY:
+      return update(state, {
+        strategy: { $set: action.strategy },
       });
 
     case types.INVALIDATE_RENDERING:

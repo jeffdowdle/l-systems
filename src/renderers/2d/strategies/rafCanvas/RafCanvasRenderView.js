@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { expand } from 'modules/lsystem/functions';
-import CanvasTurtleRenderer from '../CanvasTurtleRenderer';
+import RafCanvas from './RafCanvas';
 
-class CanvasTurtleRenderView extends React.Component {
+class RafCanvasRenderView extends React.Component {
   constructor(props) {
     super(props);
     this.canvas = null;
@@ -15,7 +15,7 @@ class CanvasTurtleRenderView extends React.Component {
 
   draw() {
     const { params, commands, rules, axiom, iterations } = this.props;
-    const turtle = new CanvasTurtleRenderer(this.canvas, params, commands);
+    const turtle = new RafCanvas(this.canvas, params, commands);
     turtle.draw(expand(rules, axiom, iterations));
   }
 
@@ -28,10 +28,10 @@ class CanvasTurtleRenderView extends React.Component {
   }
 }
 
-CanvasTurtleRenderView.defaultProps = {
+RafCanvasRenderView.defaultProps = {
 };
 
-CanvasTurtleRenderView.propTypes = {
+RafCanvasRenderView.propTypes = {
   params: PropTypes.object,
   commands: PropTypes.object,
   axiom: PropTypes.string.isRequired,
@@ -39,4 +39,4 @@ CanvasTurtleRenderView.propTypes = {
   iterations: PropTypes.number.isRequired,
 };
 
-export default CanvasTurtleRenderView;
+export default RafCanvasRenderView;

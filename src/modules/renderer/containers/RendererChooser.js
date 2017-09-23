@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import {
   selectors as rendererSelectors,
   actions as rendererActions,
-} from 'modules/renderers';
+} from 'modules/renderer';
 import SelectInput from 'form/SelectInput';
+import { rendererTypes } from 'renderers';
 
 const RendererChooser = ({
   renderer,
@@ -13,23 +14,12 @@ const RendererChooser = ({
 }) => {
   const options = [
     {
-      label: 'Select a renderer',
-      value: undefined,
-    },
-    {
-      label: 'Canvas turtle',
-      value: 'CANVAS_TURTLE',
+      label: '2d',
+      value: rendererTypes.RENDERER_2D,
     },
   ];
 
   return (
-    // <div>
-    //   <select value={renderer} onChange={e => onUpdateRenderer(e.target.value)}>
-    //     <option value={undefined}>Select a renderer</option>
-    //     <option value="CANVAS_TURTLE">Canvas turtle</option>
-    //   </select>
-    // </div>
-
     <SelectInput
       id="renderer"
       label="Renderer"
@@ -47,6 +37,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onUpdateRenderer: (renderer) => {
     dispatch(rendererActions.updateRenderer(renderer));
+    dispatch(rendererActions.invalidateRendering());
   },
 });
 

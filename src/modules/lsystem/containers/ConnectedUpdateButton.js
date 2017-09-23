@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import {
   actions as rendererActions,
-} from 'modules/renderers';
+} from 'modules/renderer';
 import UpdateButton from 'components/UpdateButton';
 
 

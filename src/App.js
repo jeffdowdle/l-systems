@@ -1,6 +1,6 @@
 import React from 'react';
 import { Presets } from 'modules/presets';
-import { RendererChooser } from 'modules/renderers';
+import { RendererChooser, StrategyChooser } from 'modules/renderer';
 import { ProductionRules } from 'modules/rules';
 import { Axiom } from 'modules/axiom';
 import { Params } from 'modules/params';
@@ -17,11 +17,12 @@ const App = () => (
     <AppLayoutSideBar
       footer={<ConnectedUpdateButton />}
     >
+      <RendererChooser />
       <SideBarSection heading="Presets">
         <Presets />
       </SideBarSection>
-      <SideBarSection heading="Renderer">
-        <RendererChooser />
+      <SideBarSection heading="Params">
+        <StrategyChooser />
         <Params />
       </SideBarSection>
       <SideBarSection heading="Commands">

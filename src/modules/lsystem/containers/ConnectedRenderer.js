@@ -11,11 +11,13 @@ import {
   selectors as paramsSelectors,
 } from 'modules/params';
 import {
-  rendererTypes,
   actions as rendererActions,
   selectors as renderersSelectors,
-} from 'modules/renderers';
-import { CanvasTurtleRenderView } from 'modules/renderers/canvasTurtle';
+} from 'modules/renderer';
+import {
+  rendererTypes,
+  renderers,
+} from 'renderers';
 
 type Props = {
   currentRenderer: Object,
@@ -50,27 +52,35 @@ class ConnectedRenderer extends React.Component<Props> {
   }
 
   update() {
-    // Avoid refinement invalidation (flow)
-    const renderer = this.renderer;
+    this.props.onValidateRendering();
 
-    if (renderer && renderer.draw) {
-      this.props.onValidateRendering();
-      renderer.draw();
+    if (this.renderer && this.renderer.draw) {
+      this.renderer.draw();
     }
   }
 
   render() {
     const { currentRenderer } = this.props;
 
-    let Renderer;
+    let RenderComponent;
+
+    const renderer = renderers[currentRenderer.type];
+
+    if (!renderer) {
+      console.warn(`Couldn't find a renderer with the type '${currentRenderer.type}'`);
+
+      this.renderer = null;
+      return null;
+    }
+    const strategy = renderer.strategies[currentRenderer.strategy];
 
     switch (currentRenderer.type) {
-      case rendererTypes.CANVAS_TURTLE:
+      case rendererTypes.RENDERER_2D:
       default:
-        Renderer = CanvasTurtleRenderView;
+        RenderComponent = strategy.Component;
     }
 
-    return <Renderer {...this.props} ref={(r) => { this.renderer = r; }} />;
+    return <RenderComponent {...this.props} ref={(r) => { this.renderer = r; }} />;
   }
 }
 

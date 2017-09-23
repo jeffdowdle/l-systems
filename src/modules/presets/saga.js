@@ -3,7 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 import { actions as iterationsActions } from 'modules/iterations';
 import { actions as axiomActions } from 'modules/axiom';
 import { actions as rulesActions } from 'modules/rules';
-import { actions as renderersActions } from 'modules/renderers';
+import { actions as renderersActions } from 'modules/renderer';
 import { actions as paramsActions } from 'modules/params';
 
 import { LOAD_PRESET } from './actionTypes';

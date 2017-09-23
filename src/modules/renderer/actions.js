@@ -5,6 +5,11 @@ export const updateRenderer = renderer => ({
   renderer,
 });
 
+export const updateRenderStrategy = strategy => ({
+  type: types.UPDATE_RENDER_STRATEGY,
+  strategy,
+});
+
 export const invalidateRendering = () => ({
   type: types.INVALIDATE_RENDERING,
 });

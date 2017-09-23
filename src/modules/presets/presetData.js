@@ -14,7 +14,7 @@ export default [
       ],
     },
     renderer: {
-      type: 'CANVAS_TURTLE',
+      type: 'RENDERER_2D',
       params: [
         {
           id: 'angle',
@@ -42,7 +42,7 @@ export default [
       ],
     },
     renderer: {
-      type: 'CANVAS_TURTLE',
+      type: 'RENDERER_2D',
       params: [
         {
           id: 'angle',
@@ -70,7 +70,7 @@ export default [
       ],
     },
     renderer: {
-      type: 'CANVAS_TURTLE',
+      type: 'RENDERER_2D',
       params: [
         {
           id: 'angle',
@@ -94,7 +94,7 @@ export default [
       ],
     },
     renderer: {
-      type: 'CANVAS_TURTLE',
+      type: 'RENDERER_2D',
       params: [
         {
           id: 'angle',
@@ -118,7 +118,7 @@ export default [
       ],
     },
     renderer: {
-      type: 'CANVAS_TURTLE',
+      type: 'RENDERER_2D',
       params: [
         {
           id: 'angle',
@@ -142,7 +142,7 @@ export default [
       ],
     },
     renderer: {
-      type: 'CANVAS_TURTLE',
+      type: 'RENDERER_2D',
       params: [
         {
           id: 'angle',
@@ -170,7 +170,7 @@ export default [
       ],
     },
     renderer: {
-      type: 'CANVAS_TURTLE',
+      type: 'RENDERER_2D',
       params: [
         {
           id: 'angle',
@@ -198,7 +198,7 @@ export default [
       ],
     },
     renderer: {
-      type: 'CANVAS_TURTLE',
+      type: 'RENDERER_2D',
       params: [
         {
           id: 'angle',
@@ -226,7 +226,7 @@ export default [
       ],
     },
     renderer: {
-      type: 'CANVAS_TURTLE',
+      type: 'RENDERER_2D',
       params: [
         {
           id: 'angle',

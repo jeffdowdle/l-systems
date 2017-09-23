@@ -1,4 +1,4 @@
-import * as actions from 'modules/renderers/actions';
+import * as actions from 'modules/renderer/actions';
 
 describe('Renderer action creators behave correctly', () => {
   it('updateRenderer(rendererId)', () => {

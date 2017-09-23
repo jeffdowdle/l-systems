@@ -1,10 +1,11 @@
-import { CommandTypes } from './commands';
-import { DryRunTurtle, CanvasTurtle } from './Turtle';
-import TurtleUtils from './TurtleUtils';
+import { DryRunTurtle, CanvasTurtle } from 'renderers/2d/turtle/Turtle';
+import TurtleUtils from 'renderers/2d/turtle/TurtleUtils';
+
+import { CommandTypes } from 'renderers/2d/commands';
 
 const BASE_LENGTH = 1;
 
-export default class TurtleRenderer {
+export default class NaiveCanvas {
   constructor(canvas, params, commands) {
     this.canvas = canvas;
     this.params = params;

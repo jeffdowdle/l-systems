@@ -1,21 +1,23 @@
-import { commandDefinitions } from 'modules/renderers';
+import { renderers } from 'renderers';
 import * as types from './actionTypes';
 
 const initialState = {};
-Object.keys(commandDefinitions).forEach((key) => {
+
+Object.keys(renderers).forEach((key) => {
   initialState[key] = [];
 
-  commandDefinitions[key].forEach((d) => {
-    if (d.defaultSymbols) {
-      d.defaultSymbols.forEach((symbol) => {
+  renderers[key].commands.forEach((r) => {
+    if (r.defaultSymbols) {
+      r.defaultSymbols.forEach((symbol) => {
         initialState[key].push({
           symbol,
-          value: d.id,
+          value: r.id,
         });
       });
     }
   });
 });
+
 
 const commands = (state = initialState, action) => {
   switch (action.type) {

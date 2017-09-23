@@ -7,7 +7,7 @@ import {
 import {
   commandDefinitions,
   selectors as rendererSelectors,
-} from 'modules/renderers';
+} from 'modules/renderer';
 import CommandList from 'components/CommandList';
 
 const Params = ({
@@ -17,16 +17,7 @@ const Params = ({
   if (!commands) { return null; }
 
   return (
-    <CommandList commands={commandDefinitions[renderer]} />
-    // <div>
-    //   {commands.map((command) => {
-    //     const definition = commandDefinitions[renderer].find(d => d.id === command.value);
-
-    //     return (
-    //       <Command symbol={command.symbol} command={definition} />
-    //     );
-    //   })}
-    // </div>
+    <CommandList commands={renderer.commands} />
   );
 };
 
@@ -35,7 +26,7 @@ Params.propTypes = {
 
 const mapStateToProps = state => ({
   commands: commandsSelectors.getCurrentRendererCommands(state),
-  renderer: rendererSelectors.getCurrentRenderer(state),
+  renderer: rendererSelectors.getRenderer(state),
 });
 
 export default connect(mapStateToProps, null)(Params);

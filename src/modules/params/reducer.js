@@ -1,13 +1,13 @@
-import { paramDefinitions } from 'modules/renderers';
+import { renderers } from 'renderers';
 import * as types from './actionTypes';
 
 const initialState = {};
-Object.keys(paramDefinitions).forEach((key) => {
-  initialState[key] = paramDefinitions[key].map(d => ({
-    id: d.id,
-    value: d.initialValue,
+Object.keys(renderers).forEach((key) => {
+  initialState[key] = renderers[key].params.map(p => ({
+    id: p.id,
+    value: p.initialValue,
   }));
-});
+})
 
 const renderer = (state, action) => {
   switch (action.type) {

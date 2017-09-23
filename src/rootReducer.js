@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { reducer as renderer } from 'modules/renderers';
+import { reducer as renderer } from 'modules/renderer';
 import { reducer as params } from 'modules/params';
 import { reducer as commands } from 'modules/commands';
 import { reducer as iterations } from 'modules/iterations';

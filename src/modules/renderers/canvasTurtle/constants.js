@@ -1,1 +1,0 @@
-export const RENDERER_NAME = 'CANVAS_TURTLE';

@@ -18,6 +18,7 @@ module.exports = {
     alias: {
       components: path.resolve(__dirname, 'src/components/'),
       modules: path.resolve(__dirname, 'src/modules/'),
+      renderers: path.resolve(__dirname, 'src/renderers/'),
       form: path.resolve(__dirname, 'src/form/'),
     },
   },
