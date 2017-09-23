@@ -1,5 +1,7 @@
+// @flow
+
 import { connect } from 'react-redux';
-import React from 'react';
+import * as React from 'react';
 import { selectors as iterationsSelectors } from 'modules/iterations';
 import { selectors as rulesSelectors } from 'modules/rules';
 import { selectors as axiomSelectors } from 'modules/axiom';
@@ -15,8 +17,25 @@ import {
 } from 'modules/renderers';
 import { CanvasTurtleRenderView } from 'modules/renderers/canvasTurtle';
 
+type Props = {
+  currentRenderer: Object,
+  params: Object,
+  commands: Object,
+  rules: Array<Object>,
+  axiom: string,
+  iterations: number,
+  onRegisterParam: Function,
+  onValidateRendering: Function,
+};
 
-class ConnectedRenderer extends React.Component {
+class ConnectedRenderer extends React.Component<Props> {
+  renderer: CanvasTurtleRenderView;
+
+  constructor(props) {
+    super(props);
+    this.renderer = null;
+  }
+
   componentDidMount() {
     this.update();
   }
@@ -31,9 +50,12 @@ class ConnectedRenderer extends React.Component {
   }
 
   update() {
-    if (this.renderer && this.renderer.draw) {
+    // Avoid refinement invalidation (flow)
+    const renderer = this.renderer;
+
+    if (renderer && renderer.draw) {
       this.props.onValidateRendering();
-      this.renderer.draw();
+      renderer.draw();
     }
   }
 

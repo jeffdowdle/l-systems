@@ -1,0 +1,12 @@
+[ignore]
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+module.name_mapper='^modules' -> '<PROJECT_ROOT>/src/modules'
+module.name_mapper='^components' -> '<PROJECT_ROOT>/src/components'
+module.name_mapper='^form' -> '<PROJECT_ROOT>/src/form'
