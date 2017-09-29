@@ -118,14 +118,11 @@ class ConnectedRenderer extends React.Component<Props> {
     }
 
     return (
-      <div>
-        <div>{currentRenderer.isDrawing ? 'DRAWING' : 'NOT DRAWING'}</div>
-        <RenderComponent
-          {...this.props}
-          onFinish={this.handleFinish}
-          ref={(r) => { this.renderer = r; }}
-        />
-      </div>
+      <RenderComponent
+        {...this.props}
+        onFinish={this.handleFinish}
+        ref={(r) => { this.renderer = r; }}
+      />
     );
   }
 }
