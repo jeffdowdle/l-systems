@@ -36,6 +36,8 @@ class ConnectedRenderer extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.renderer = null;
+
+    this.handleFinish = this.handleFinish.bind(this);
   }
 
   componentDidMount() {
@@ -49,14 +51,49 @@ class ConnectedRenderer extends React.Component<Props> {
     if (wasValid && !isValid) {
       this.update();
     }
+
+    const shouldCancel = !prevProps.currentRenderer.shouldCancel && this.props.currentRenderer.shouldCancel;
+
+    if (shouldCancel) {
+      this.cancel();
+    }
   }
 
   update() {
+    // Okay, we acknowledge we have to re-render now.
     this.props.onValidateRendering();
 
-    if (this.renderer && this.renderer.draw) {
-      this.renderer.draw();
+    // Cancel the current render if there's one in progress, then draw
+    if (this.props.currentRenderer.isDrawing) {
+      // Raise an action so other components can know what's going on.
+      this.props.onCancel();
+
+      this.renderer.cancel(() => {
+        this.props.onFinishDraw();
+
+        this.draw();
+      });
+    // Otherwise just draw it.
+    } else {
+      this.draw();
     }
+  }
+
+  draw() {
+    this.props.onStartDraw();
+    this.renderer.draw();
+  }
+
+  cancel() {
+    if (!this.props.currentRenderer.isDrawing) { return; }
+
+    this.renderer.cancel(() => {
+      this.props.onFinishDraw();
+    });
+  }
+
+  handleFinish() {
+    this.props.onFinishDraw();
   }
 
   render() {
@@ -80,7 +117,16 @@ class ConnectedRenderer extends React.Component<Props> {
         RenderComponent = strategy.Component;
     }
 
-    return <RenderComponent {...this.props} ref={(r) => { this.renderer = r; }} />;
+    return (
+      <div>
+        <div>{currentRenderer.isDrawing ? 'DRAWING' : 'NOT DRAWING'}</div>
+        <RenderComponent
+          {...this.props}
+          onFinish={this.handleFinish}
+          ref={(r) => { this.renderer = r; }}
+        />
+      </div>
+    );
   }
 }
 
@@ -100,6 +146,15 @@ const mapDispatchToProps = dispatch => ({
   },
   onValidateRendering: () => {
     dispatch(rendererActions.validateRendering());
+  },
+  onStartDraw: () => {
+    dispatch(rendererActions.startDraw());
+  },
+  onFinishDraw: () => {
+    dispatch(rendererActions.finishDraw());
+  },
+  onCancel: () => {
+    dispatch(rendererActions.cancelDraw());
   },
 });
 

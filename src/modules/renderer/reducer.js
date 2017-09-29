@@ -6,6 +6,9 @@ const initialState = {
   type: 'RENDERER_2D',
   strategy: 'RAF_CANVAS',
   renderingIsValid: false,
+  isDrawing: false,
+  shouldCancel: false,
+  isCancelling: false,
 };
 
 const renderer = (state = initialState, action) => {
@@ -28,6 +31,31 @@ const renderer = (state = initialState, action) => {
     case types.VALIDATE_RENDERING:
       return update(state, {
         renderingIsValid: { $set: true },
+      });
+
+    case types.START_DRAW:
+      return update(state, {
+        isDrawing: { $set: true },
+      });
+
+    case types.FINISH_DRAW:
+      return update(state, {
+        isDrawing: { $set: false },
+        shouldCancel: { $set: false },
+        isCancelling: { $set: false },
+      });
+
+    case types.CANCEL_DRAW:
+      return update(state, {
+        shouldCancel: { $set: false },
+        isCancelling: { $set: true },
+      });
+
+    case types.REQUEST_CANCEL_DRAW:
+      if (!state.isDrawing) { return state; }
+
+      return update(state, {
+        shouldCancel: { $set: true },
       });
 
     default:

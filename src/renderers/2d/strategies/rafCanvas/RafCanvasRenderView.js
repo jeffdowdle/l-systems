@@ -7,6 +7,8 @@ class RafCanvasRenderView extends React.Component {
   constructor(props) {
     super(props);
     this.canvas = null;
+    this.renderer = null;
+    this.isCancelling = false;
   }
 
   shouldComponentUpdate() {
@@ -15,15 +17,25 @@ class RafCanvasRenderView extends React.Component {
 
   draw() {
     const { params, commands, rules, axiom, iterations } = this.props;
-    const turtle = new RafCanvas(this.canvas, params, commands);
-    turtle.draw(expand(rules, axiom, iterations));
+    this.renderer = new RafCanvas(this.canvas, params, commands);
+
+    this.renderer.draw(expand(rules, axiom, iterations), () => {
+      if (!this.isCancelling) {
+        this.props.onFinish();
+      }
+
+      this.isCancelling = false;
+    });
+  }
+
+  cancel(onCancelDone) {
+    this.isCancelling = true;
+    this.renderer.cancel(onCancelDone);
   }
 
   render() {
     return (
-      <div>
-        <canvas ref={(c) => { this.canvas = c; }} />
-      </div>
+      <canvas ref={(c) => { this.canvas = c; }} />
     );
   }
 }

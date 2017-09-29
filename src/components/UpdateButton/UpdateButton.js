@@ -4,12 +4,13 @@ import './update-button.scss';
 
 const UpdateButton = ({
   onClick,
+  label,
 }) => (
   <button
     styleName="update-button"
     onClick={onClick}
   >
-    Update
+    {label}
   </button>
 );
 

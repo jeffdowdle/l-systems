@@ -6,13 +6,18 @@ import { CommandTypes } from 'renderers/2d/commands';
 const BASE_LENGTH = 1;
 
 export default class RafCanvas {
-  constructor(canvas, params, commands) {
+  constructor(canvas, params, commands, onFinish = () => {}) {
     this.canvas = canvas;
     this.params = params;
     this.commands = commands;
 
     this.canvas.width = 600;
     this.canvas.height = 600;
+
+    this.isDrawing = false;
+    this.onCancelDone = null;
+    this.onFinish = null;
+    this.shouldCancel = false
   }
 
   calculateBoundingBox(instructions) {
@@ -28,7 +33,10 @@ export default class RafCanvas {
     return dryRunTurtle.boundingBox;
   }
 
-  draw(instructions) {
+  draw(instructions, onFinish = () => {}) {
+    this.onFinish = onFinish;
+    this.isDrawing = true;
+
     const ctx = this.canvas.getContext('2d');
 
     // Clear canvas
@@ -86,12 +94,27 @@ export default class RafCanvas {
 
       i += batchSize;
 
-      if (i <= instructions.length) {
+      if (!this.shouldCancel && i <= instructions.length) {
         window.requestAnimationFrame(step);
+      } else {
+        this.isDrawing = false;
+
+        if (typeof this.onCancelDone === 'function') {
+          this.onCancelDone();
+        }
+
+        if (typeof this.onFinish === 'function') {
+          this.onFinish();
+        }
       }
     };
 
     window.requestAnimationFrame(step);
+  }
+
+  cancel(onCancelDone) {
+    this.onCancelDone = onCancelDone;
+    this.shouldCancel = true;
   }
 
   executeCommand(turtle, symbol) {

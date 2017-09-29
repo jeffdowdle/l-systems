@@ -17,3 +17,19 @@ export const invalidateRendering = () => ({
 export const validateRendering = () => ({
   type: types.VALIDATE_RENDERING,
 });
+
+export const startDraw = () => ({
+  type: types.START_DRAW,
+});
+
+export const finishDraw = () => ({
+  type: types.FINISH_DRAW,
+});
+
+export const requestCancelDraw = () => ({
+  type: types.REQUEST_CANCEL_DRAW,
+});
+
+export const cancelDraw = () => ({
+  type: types.CANCEL_DRAW,
+});

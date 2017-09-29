@@ -17,13 +17,16 @@ class NaiveCanvasRenderView extends React.Component {
     const { params, commands, rules, axiom, iterations } = this.props;
     const turtle = new NaiveCanvas(this.canvas, params, commands);
     turtle.draw(expand(rules, axiom, iterations));
+    this.props.onFinish();
+  }
+
+  cancel() {
+    // no point :P
   }
 
   render() {
     return (
-      <div>
-        <canvas ref={(c) => { this.canvas = c; }} />
-      </div>
+      <canvas ref={(c) => { this.canvas = c; }} />
     );
   }
 }
