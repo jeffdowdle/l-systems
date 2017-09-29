@@ -31,44 +31,35 @@ module.exports = {
           path.resolve(__dirname, './node_modules/normalize.css/normalize.css'),
           path.resolve(__dirname, './src/styles/global.scss'),
         ],
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-        ],
+        use: 'null-loader',
       },
 
       // CSS Modules
       {
         include: path.resolve(__dirname, './src'),
         exclude: path.resolve(__dirname, './src/styles/global.scss'),
-        use: [
-          {
-            loader: 'css-loader',
-            options: {
-              importLoader: 1,
-              modules: true,
-              localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
-            },
-          },
-          'postcss-loader',
-          'sass-loader',
-          {
-            loader: 'sass-resources-loader',
-            options: {
-              resources: ['./src/styles/resources/index.scss'],
-            },
-          },
-        ],
+        use: 'null-loader',
         test: /\.(css|scss)$/,
       },
 
       // Javascript
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: [
+          /node_modules/,
+          /\.worker\.js$/
+        ],
         use: [
           'babel-loader',
+        ],
+      },
+
+      // Javascript
+      {
+        test: /\.worker\.js$/,
+        exclude: /node_modules/,
+        use: [
+          'null-loader',
         ],
       },
 

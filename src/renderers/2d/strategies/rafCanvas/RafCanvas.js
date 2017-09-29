@@ -1,4 +1,4 @@
-import DimensionsWorker from 'worker-loader!./dimensions.worker';
+import DimensionsWorker from './dimensions.worker';
 
 import { DryRunTurtle, CanvasTurtle } from 'renderers/2d/turtle/Turtle';
 import TurtleUtils from 'renderers/2d/turtle/TurtleUtils';

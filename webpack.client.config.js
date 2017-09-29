@@ -11,7 +11,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: DIST_PATH,
-    publicPath: '/',
+    publicPath: '/static/',
     filename: 'bundle.js',
   },
   resolve: {
@@ -71,8 +71,21 @@ module.exports = {
       // Javascript
       {
         test: /\.js$/,
+        exclude: [
+          /node_modules/,
+          /\.worker\.js$/
+        ],
+        use: [
+          'babel-loader',
+        ],
+      },
+
+      // Javascript
+      {
+        test: /\.worker\.js$/,
         exclude: /node_modules/,
         use: [
+          'worker-loader',
           'babel-loader',
         ],
       },

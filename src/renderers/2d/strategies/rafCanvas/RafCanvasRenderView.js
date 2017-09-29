@@ -1,4 +1,4 @@
-import ExpandWorker from 'worker-loader!./expand.worker';
+import ExpandWorker from './expand.worker';
 
 import React from 'react';
 import PropTypes from 'prop-types';
