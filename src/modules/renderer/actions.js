@@ -5,8 +5,9 @@ export const updateRenderer = renderer => ({
   renderer,
 });
 
-export const updateRenderStrategy = strategy => ({
+export const updateRenderStrategy = (renderer, strategy) => ({
   type: types.UPDATE_RENDER_STRATEGY,
+  renderer,
   strategy,
 });
 

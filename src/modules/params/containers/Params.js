@@ -28,6 +28,7 @@ const mapFieldTypeToComponent = (fieldType) => {
 const Params = ({
   params,
   renderer,
+  rendererType,
   onUpdateParam,
 }) => {
   if (!params) { return null; }
@@ -44,7 +45,7 @@ const Params = ({
             key={param.id}
             value={param.value}
             onChange={(value) => {
-              onUpdateParam(renderer, param.id, value);
+              onUpdateParam(rendererType, param.id, value);
             }}
           />
         );
@@ -58,6 +59,7 @@ Params.propTypes = {
 
 const mapStateToProps = state => ({
   params: paramsSelectors.getCurrentRendererParams(state),
+  rendererType: rendererSelectors.getCurrentRenderer(state),
   renderer: rendererSelectors.getRenderer(state),
 });
 

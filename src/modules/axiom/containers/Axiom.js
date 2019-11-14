@@ -15,8 +15,8 @@ const ProductionRules = ({
     id="axiom"
     label="Axiom"
     value={axiom}
-    onChange={(e) => {
-      onChange(e.target.value);
+    onChange={(value) => {
+      onChange(value);
     }}
   />
 );

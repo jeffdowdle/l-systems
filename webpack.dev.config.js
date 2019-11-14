@@ -12,6 +12,8 @@ devConfig.devServer = {
   },
 };
 
+devConfig.output.publicPath = '/';
+
 const htmlPlugin = new HtmlWebpackPlugin({
   template: 'src/index.ejs',
 });

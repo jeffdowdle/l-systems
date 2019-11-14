@@ -1,13 +1,12 @@
-import ExpandWorker from 'modules/lsystem/expand.worker';
-
 import React from 'react';
 import PropTypes from 'prop-types';
-import RafCanvas from './RafCanvas';
+import ExpandWorker from 'modules/lsystem/expand.worker';
+import WebGLRenderer from './WebGLRenderer';
 
-class RafCanvasRenderView extends React.Component {
+class WebGLRenderView extends React.Component {
   constructor(props) {
     super(props);
-    this.canvas = null;
+    this.container = null;
     this.renderer = null;
     this.isCancelling = false;
   }
@@ -18,7 +17,7 @@ class RafCanvasRenderView extends React.Component {
 
   draw() {
     const { params, commands, rules, axiom, iterations } = this.props;
-    this.renderer = new RafCanvas(this.canvas, params, commands);
+    this.renderer = new WebGLRenderer(this.container, params, commands);
 
     // Expanding the l-system can be a very heavy task, so run it in a seperate thread.
     const worker = new ExpandWorker();
@@ -54,15 +53,15 @@ class RafCanvasRenderView extends React.Component {
 
   render() {
     return (
-      <canvas ref={(c) => { this.canvas = c; }} />
+      <div ref={(c) => { this.container = c; }} />
     );
   }
 }
 
-RafCanvasRenderView.defaultProps = {
+WebGLRenderView.defaultProps = {
 };
 
-RafCanvasRenderView.propTypes = {
+WebGLRenderView.propTypes = {
   params: PropTypes.object,
   commands: PropTypes.object,
   axiom: PropTypes.string.isRequired,
@@ -70,4 +69,4 @@ RafCanvasRenderView.propTypes = {
   iterations: PropTypes.number.isRequired,
 };
 
-export default RafCanvasRenderView;
+export default WebGLRenderView;

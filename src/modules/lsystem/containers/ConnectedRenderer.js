@@ -109,7 +109,7 @@ class ConnectedRenderer extends React.Component<Props> {
       this.renderer = null;
       return null;
     }
-    const strategy = renderer.strategies[currentRenderer.strategy];
+    const strategy = renderer.strategies[currentRenderer.strategy[currentRenderer.type]];
 
     switch (currentRenderer.type) {
       case rendererTypes.RENDERER_2D:

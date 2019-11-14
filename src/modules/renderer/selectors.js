@@ -15,5 +15,5 @@ export const getCurrentRenderer = createSelector(
 
 export const getCurrentStrategy = createSelector(
   selectRenderer,
-  renderer => renderer.strategy,
+  renderer => renderer.strategy[renderer.type],
 );

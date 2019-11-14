@@ -17,6 +17,10 @@ const RendererChooser = ({
       label: '2d',
       value: rendererTypes.RENDERER_2D,
     },
+    {
+      label: '3d',
+      value: rendererTypes.RENDERER_3D,
+    },
   ];
 
   return (

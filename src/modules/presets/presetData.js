@@ -235,4 +235,64 @@ export default [
       ],
     },
   },
+  {
+    meta: {
+      title: '3d Hilbert Curve',
+    },
+    lsystem: {
+      iterations: 2,
+      axiom: 'X',
+      rules: [
+        {
+          symbol: 'X',
+          successor: '^\\XF^\\XFX-F^//XFX&F+//XFX-F/X-/',
+        },
+      ],
+    },
+    renderer: {
+      type: 'RENDERER_3D',
+      params: [
+        {
+          id: 'angle',
+          value: 90,
+        },
+      ],
+    },
+  },
+  {
+    meta: {
+      title: '3d Tree',
+    },
+    lsystem: {
+      iterations: 5,
+      axiom: 'A',
+      rules: [
+        {
+          symbol: 'A',
+          successor: '[&FL!A]/////’[&FL!A]///////’[&FL!A]',
+        },
+        {
+          symbol: 'F',
+          successor: 'S/////F',
+        },
+        {
+          symbol: 'S',
+          successor: 'FL',
+        },
+        {
+          symbol: 'L',
+          successor: '[’’’^^{-f+f+f-|-f+f+f}]',
+        },
+      ],
+    },
+    renderer: {
+      type: 'RENDERER_3D',
+      params: [
+        {
+          id: 'angle',
+          value: 23,
+        },
+      ],
+    },
+  },
 ];

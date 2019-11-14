@@ -26,7 +26,9 @@ const StategyChooser = ({
       label="Render strategy"
       value={currentStrategy}
       options={options}
-      onChange={onUpdateStrategy}
+      onChange={(value) => {
+        onUpdateStrategy(currentRenderer, value);
+      }}
     />
   );
 };
@@ -37,8 +39,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onUpdateStrategy: (strategy) => {
-    dispatch(rendererActions.updateRenderStrategy(strategy));
+  onUpdateStrategy: (renderer, strategy) => {
+    dispatch(rendererActions.updateRenderStrategy(renderer, strategy));
     dispatch(rendererActions.invalidateRendering());
   },
 });
